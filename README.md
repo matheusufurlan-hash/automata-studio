@@ -91,6 +91,68 @@ sudo apt install ./src-tauri/target/release/bundle/deb/*.deb
 ```
 Depois disso, o **Automata Studio** aparece no menu de aplicativos.
 
+### No Windows (10 ou 11)
+
+Há dois jeitos: **no navegador** (mais rápido, só precisa do Node.js) ou **como programa
+instalado** (gera um instalador `.exe`, mas precisa de mais ferramentas).
+
+#### 1. Baixar o projeto
+
+- **Com Git:** abra o **PowerShell** e rode
+  ```powershell
+  git clone https://github.com/matheusufurlan-hash/automata-studio.git
+  cd automata-studio
+  ```
+- **Sem Git:** nesta página, clique em **Code → Download ZIP**, extraia a pasta, abra a pasta
+  extraída no Explorador de Arquivos, clique na barra de endereço, digite `powershell` e aperte
+  Enter. O PowerShell abre já dentro da pasta.
+
+#### 2. Instalar o Node.js
+
+Baixe a versão **LTS** em [nodejs.org](https://nodejs.org) (precisa ser a 20.19 ou mais nova) e
+instale com as opções padrão. **Feche e abra o PowerShell de novo** e confira:
+```powershell
+node -v
+```
+
+> Se o PowerShell disser que *a execução de scripts foi desabilitada* ao rodar `npm`, rode uma vez
+> `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` e confirme com **S**.
+
+#### 3a. Rodar no navegador
+
+Dentro da pasta do projeto:
+```powershell
+npm ci
+npm run dev
+```
+Abra **http://localhost:5173** no navegador. Para parar, aperte **Ctrl+C** no PowerShell. Da
+próxima vez, basta o `npm run dev`.
+
+#### 3b. Gerar o programa instalável (.exe)
+
+Instale, só na 1ª vez:
+1. **Microsoft C++ Build Tools:** baixe em
+   [visualstudio.microsoft.com/visual-cpp-build-tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/),
+   abra o instalador e marque **"Desenvolvimento para desktop com C++"**.
+2. **Rust:** baixe e rode o `rustup-init.exe` de [rustup.rs](https://rustup.rs) e aceite a opção
+   padrão (Enter).
+3. **WebView2:** já vem no Windows 10 (atualizado) e no Windows 11. Se faltar, baixe o
+   *Evergreen Bootstrapper* em
+   [developer.microsoft.com/microsoft-edge/webview2](https://developer.microsoft.com/microsoft-edge/webview2/).
+
+Feche e abra o PowerShell de novo, entre na pasta do projeto e rode:
+```powershell
+npm ci
+npm run tauri build -- --bundles nsis
+```
+A 1ª compilação demora (vários minutos). O instalador fica em
+`src-tauri\target\release\bundle\nsis\`, com um nome parecido com
+`Automata Studio_0.2.0_x64-setup.exe`. Dê dois cliques nele. Depois, o **Automata Studio** aparece
+no Menu Iniciar.
+
+> Se o Windows mostrar **"O Windows protegeu o computador"**, clique em **Mais informações →
+> Executar assim mesmo**. O aviso aparece porque o instalador não tem assinatura digital.
+
 ## Testes
 
 ```bash
