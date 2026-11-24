@@ -1,0 +1,647 @@
+/*
+ * Simulação de AP e MT. Cores SÓ pelos tokens de src/styles/index.css.
+ * Mesma linguagem do painel do AF (simulacao.css): âmbar (--active) enquanto
+ * simula, verde/vermelho no fim e âmbar também para "não para"/"indefinido".
+ */
+
+/* corpo: a mesma altura do AF (o canvas não muda de tamanho ao trocar de aba) */
+.sim-body.is-pda {
+  grid-template-columns: minmax(0, 1fr) 118px minmax(260px, 310px);
+}
+.sim-body.is-tm {
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 310px);
+}
+@media (max-width: 1280px) {
+  .sim-body.is-pda {
+    grid-template-columns: minmax(0, 1fr) 112px minmax(220px, 250px);
+  }
+  .sim-body.is-tm {
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 250px);
+  }
+}
+/* janela estreita: os controles quebram em mais linhas; nada fica cortado */
+.sim-body.is-machine .sim-main {
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+@media (max-width: 1100px) {
+  .sim-body.is-pda {
+    grid-template-columns: minmax(0, 1fr) 100px minmax(200px, 230px);
+  }
+  .sim-body.is-tm {
+    grid-template-columns: minmax(0, 1fr) minmax(200px, 230px);
+  }
+}
+
+/* rótulo pequeno de cada faixa ("entrada", "pilha") */
+.sim-lane {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.sim-lane-label {
+  color: var(--muted);
+  font-size: 10.5px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.sim-lane .sim-tape-scroll {
+  margin-top: -2px;
+}
+
+/* entrada do AP: o que já foi lido fica riscado */
+.sim-tape.is-struck .sim-cell.is-read {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: color-mix(in srgb, var(--text) 55%, transparent);
+}
+
+/* ------------------------------------------------------------------ */
+/* Pilha                                                               */
+/* ------------------------------------------------------------------ */
+/* o copo fica à direita da coluna; à esquerda, a etiqueta "topo" */
+.sim-stack {
+  --tone: var(--active);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-height: 0;
+  gap: 4px;
+}
+.sim-stack.tone-accepted {
+  --tone: var(--accept);
+}
+.sim-stack.tone-rejected {
+  --tone: var(--reject);
+}
+.sim-stack .sim-lane-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 5px;
+  min-width: 58px;
+  white-space: nowrap;
+}
+.sim-stack-size {
+  min-width: 16px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: var(--panel-2);
+  color: var(--text);
+  font-size: 10.5px;
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: none;
+  font-variant-numeric: tabular-nums;
+}
+/* o "copo" da pilha: aberto em cima, fundo grosso embaixo */
+.sim-stack-well {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 3px;
+  width: 58px;
+  min-height: 0;
+  padding: 4px 5px 5px;
+  box-sizing: border-box;
+  border: 2px solid var(--border-strong);
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--kind-pda) 5%, transparent));
+}
+.sim-stack-floor {
+  display: none;
+}
+.sim-stack-cell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: none;
+  height: 23px;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  background: var(--canvas);
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  transition: border-color 0.25s, background-color 0.25s, box-shadow 0.25s;
+}
+/* o topo: a borda na cor do passo e a etiqueta "topo" ao lado */
+.sim-stack-cell.is-top {
+  border-color: var(--tone);
+  background: color-mix(in srgb, var(--tone) 12%, var(--canvas));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--tone) 20%, transparent);
+}
+.sim-stack-cell.is-top::before {
+  content: 'topo';
+  position: absolute;
+  right: calc(100% + 9px);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 9.5px;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.sim-stack-cell.is-top::after {
+  content: '';
+  position: absolute;
+  right: calc(100% + 3px);
+  top: 50%;
+  width: 0;
+  height: 0;
+  margin-top: -4px;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 5px solid var(--muted);
+}
+/* o fundo (Z0): estilo próprio */
+.sim-stack-cell.is-bottom {
+  border-color: color-mix(in srgb, var(--kind-pda) 45%, var(--border));
+  background: repeating-linear-gradient(
+    -45deg,
+    color-mix(in srgb, var(--kind-pda) 14%, var(--canvas)),
+    color-mix(in srgb, var(--kind-pda) 14%, var(--canvas)) 4px,
+    color-mix(in srgb, var(--kind-pda) 6%, var(--canvas)) 4px,
+    color-mix(in srgb, var(--kind-pda) 6%, var(--canvas)) 8px
+  );
+  color: var(--kind-pda);
+}
+.sim-stack-cell.is-bottom.is-top {
+  border-color: var(--tone);
+}
+.sim-stack-cell.is-pushed {
+  animation: sim-push 0.3s cubic-bezier(0.2, 1.3, 0.4, 1);
+}
+.sim-stack-cell.is-popped {
+  overflow: hidden;
+  border-style: dashed;
+  color: var(--muted);
+  animation: sim-pop 0.42s ease-in forwards;
+}
+.sim-stack-more {
+  flex: none;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 14px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.sim-stack-empty {
+  display: grid;
+  place-items: center;
+  height: 23px;
+  border: 1.5px dashed color-mix(in srgb, var(--epsilon) 50%, transparent);
+  border-radius: 6px;
+  color: var(--epsilon);
+  font-size: 15px;
+  font-weight: 650;
+}
+.sim-stack.is-dimmed .sim-stack-well {
+  opacity: 0.6;
+}
+.sim-stack.is-dimmed .sim-stack-cell.is-top {
+  border-color: var(--border-strong);
+  background: var(--canvas);
+  box-shadow: none;
+}
+@keyframes sim-push {
+  from {
+    opacity: 0;
+    transform: translateY(-14px) scale(0.9);
+  }
+}
+@keyframes sim-pop {
+  0% {
+    opacity: 0.85;
+    height: 23px;
+  }
+  60% {
+    opacity: 0;
+    transform: translateY(-12px);
+    height: 23px;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-12px);
+    height: 0;
+    margin-bottom: -3px;
+    border-width: 0;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Fita da MT                                                          */
+/* ------------------------------------------------------------------ */
+.sim-tm-tape {
+  --tone: var(--active);
+  position: relative;
+  flex: none;
+  height: 80px;
+  overflow: hidden;
+  margin: 0 -4px;
+  /* a fita continua dos dois lados */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 28px, #000 calc(100% - 28px), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 28px, #000 calc(100% - 28px), transparent);
+}
+.sim-tm-tape.tone-accepted {
+  --tone: var(--accept);
+}
+.sim-tm-tape.tone-rejected {
+  --tone: var(--reject);
+}
+.sim-tm-tape.tone-idle {
+  --tone: color-mix(in srgb, var(--muted) 75%, transparent);
+}
+.sim-tm-strip {
+  position: absolute;
+  left: 0;
+  top: 30px;
+  height: 44px;
+  transition: transform 0.38s cubic-bezier(0.3, 0.75, 0.2, 1);
+  will-change: transform;
+}
+.sim-tm-cell {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: var(--cell);
+  height: 44px;
+  box-sizing: border-box;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  background: var(--canvas);
+  color: var(--text);
+  font-size: 19px;
+  font-weight: 650;
+}
+.sim-tm-cell.is-blank {
+  border-style: dashed;
+  background: transparent;
+  color: color-mix(in srgb, var(--muted) 65%, transparent);
+  font-weight: 500;
+}
+.sim-tm-ink {
+  display: inline-block;
+  animation: sim-ink 0.5s ease-out;
+}
+.sim-tm-cell.is-written {
+  animation: sim-written 0.9s ease-out;
+}
+@keyframes sim-ink {
+  from {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+@keyframes sim-written {
+  from {
+    background: color-mix(in srgb, var(--active) 32%, var(--canvas));
+  }
+}
+.sim-tm-head {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--cell);
+  height: 44px;
+  pointer-events: none;
+  transition: transform 0.32s cubic-bezier(0.3, 0.75, 0.2, 1);
+}
+.sim-tm-ring {
+  position: absolute;
+  inset: -3px;
+  border: 2.5px solid var(--tone);
+  border-radius: 12px;
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--tone) 22%, transparent),
+    0 0 18px color-mix(in srgb, var(--tone) 35%, transparent);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.sim-tm-state {
+  position: absolute;
+  bottom: calc(100% + 9px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2px 8px;
+  border-radius: 7px;
+  background: var(--tone);
+  color: color-mix(in srgb, var(--tone) 22%, black);
+  font-size: 12.5px;
+  font-weight: 750;
+  line-height: 16px;
+  white-space: nowrap;
+  box-shadow: var(--shadow-xs);
+  transition: background-color 0.3s;
+}
+.sim-tm-tape.tone-idle .sim-tm-state {
+  background: var(--panel-2);
+  color: var(--muted);
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+.sim-tm-tick {
+  position: absolute;
+  bottom: calc(100% + 3px);
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid var(--tone);
+  transition: border-color 0.3s;
+}
+.sim-tm-tape.tone-idle .sim-tm-tick {
+  border-top-color: var(--border-strong);
+}
+
+/* ------------------------------------------------------------------ */
+/* Sequência de IDs (⊢)                                                */
+/* ------------------------------------------------------------------ */
+.sim-ids {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  min-height: 34px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2px 2px 4px;
+  scrollbar-width: thin;
+}
+.sim-ids.sim-tl-empty {
+  color: var(--muted);
+  font-size: 12.5px;
+}
+.sim-id {
+  flex: none;
+  height: 26px;
+  padding: 0 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, opacity 0.2s, box-shadow 0.15s;
+}
+.sim-id:hover {
+  border-color: var(--border-strong);
+  background: var(--panel-2);
+}
+.sim-id.is-future {
+  opacity: 0.45;
+}
+.sim-id.is-current {
+  border-color: var(--active);
+  background: color-mix(in srgb, var(--active) 15%, var(--panel));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--active) 22%, transparent);
+}
+.sim-id.is-current.is-accepted {
+  border-color: var(--accept);
+  background: color-mix(in srgb, var(--accept) 15%, var(--panel));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accept) 22%, transparent);
+}
+.sim-id.is-current.is-rejected {
+  border-color: var(--reject);
+  background: color-mix(in srgb, var(--reject) 13%, var(--panel));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--reject) 20%, transparent);
+}
+.sim-id .eps {
+  color: var(--epsilon);
+}
+.sim-id-state {
+  color: var(--accent);
+  font-weight: 750;
+}
+.sim-id-turn {
+  flex: none;
+  padding: 0 4px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+.sim-id-turn.is-future {
+  opacity: 0.45;
+}
+.sim-id-more {
+  flex: none;
+  height: 24px;
+  padding: 0 8px;
+  border: 1px dashed var(--border-strong);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 11.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.sim-id-more:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+/* ------------------------------------------------------------------ */
+/* Cartão: passo e resultado                                           */
+/* ------------------------------------------------------------------ */
+.sim-card-move {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 550;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.sim-card-note {
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+.sim-card.is-loop,
+.sim-card.is-undecided {
+  border-color: color-mix(in srgb, var(--active) 50%, var(--border));
+  background: color-mix(in srgb, var(--active) 7%, var(--canvas));
+}
+.sim-seal.is-loop,
+.sim-seal.is-undecided {
+  background: var(--active);
+  color: color-mix(in srgb, var(--active) 22%, black);
+}
+.sim-seal.sm.is-accepted,
+.sim-seal.sm.is-rejected,
+.sim-seal.sm.is-loop,
+.sim-seal.sm.is-undecided {
+  vertical-align: 1px;
+}
+.sim-output {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.sim-output span {
+  padding: 2px 9px;
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--accept) 14%, var(--panel));
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 750;
+  letter-spacing: 0.05em;
+}
+.sim-output span.eps {
+  color: var(--epsilon);
+}
+.sim .ed-btn.sim-more {
+  align-self: flex-start;
+}
+.sim-reason.muted {
+  color: var(--muted);
+  font-size: 12.5px;
+}
+.sim-link {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.sim-issues {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.sim-issues li {
+  display: flex;
+  gap: 6px;
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.4;
+}
+.sim-issues svg {
+  flex: none;
+  margin-top: 1px;
+  color: var(--reject);
+}
+.sim-issues li.more {
+  color: var(--muted);
+}
+
+.sim-tree-empty {
+  padding: 18px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sim-stack-cell,
+  .sim-tm-strip,
+  .sim-tm-head,
+  .sim-tm-ring,
+  .sim-tm-cell,
+  .sim-tm-ink {
+    transition: none;
+    animation: none;
+  }
+  .sim-stack-cell.is-popped {
+    display: none;
+  }
+}
+
+/* texto de livro: as setas da MT (→ ←) são miúdas na Inter */
+.sim-arrow {
+  display: inline-block;
+  font-weight: 650;
+  transform: scale(1.3);
+  transform-origin: 50% 55%;
+}
+.sim-card .eps {
+  color: var(--epsilon);
+}
+
+/* ------------------------------------------------------------------ */
+/* Teste em lote de AP/MT: "não para" e "indefinido" em âmbar         */
+/* ------------------------------------------------------------------ */
+.sim-batch-item .pill.und {
+  color: color-mix(in srgb, var(--active) 70%, var(--text));
+  background: color-mix(in srgb, var(--active) 16%, transparent);
+}
+.sim-batch-item .mark.und {
+  color: color-mix(in srgb, var(--active) 75%, var(--text));
+  font-size: 13px;
+}
+.sim-batch-summary .und {
+  color: color-mix(in srgb, var(--active) 75%, var(--text));
+  font-weight: 600;
+}
+/* MT por parada: cartões mais largos (palavra + saída + selo); a palavra tem prioridade e a
+   saída encolhe primeiro (e aparece inteira na dica) */
+.sim-batch-list:has(.out) {
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+.sim-batch-item:has(.out) .word {
+  flex: 1 1 auto;
+}
+.sim-batch-item .out {
+  flex: 0 8 auto;
+  min-width: 2.5em;
+  max-width: 35%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+.sim-batch-item .out.eps {
+  color: var(--epsilon);
+}
+.sim-batch-warn {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+.sim-batch-warn svg {
+  flex: none;
+  margin-top: 1px;
+  color: var(--active);
+}
+
+/* o motivo do AP/MT costuma ser mais longo que o do AF */
+.sim-body.is-machine .sim-reason {
+  font-size: 12.5px;
+}
+
+/* MT em laço: as duas IDs iguais ganham um ↺ */
+.sim-id.is-loop::after {
+  content: '↺';
+  margin-left: 5px;
+  color: color-mix(in srgb, var(--active) 75%, var(--text));
+  font-weight: 700;
+}

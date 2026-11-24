@@ -1,0 +1,313 @@
+/*
+ * Árvore de IDs. Cores SÓ pelos tokens de src/styles/index.css.
+ * Status: aceita = --accept, morreu = --reject, repetida = --epsilon,
+ * não explorada = tracejada e apagada, expandida = neutra.
+ */
+.sim-tree {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: min(340px, 44vh);
+  min-height: 250px;
+  padding: 10px 14px 10px;
+  box-sizing: border-box;
+}
+.sim-tree-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.sim-tree-head .sim-word {
+  flex: 0 1 260px;
+}
+.sim-tree-stats {
+  color: var(--muted);
+  font-size: 12.5px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.sim-tree-stats b {
+  color: var(--text);
+  font-weight: 650;
+}
+.sim-tree-limit {
+  color: color-mix(in srgb, var(--active) 75%, var(--text));
+  font-weight: 600;
+}
+.sim-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--text);
+  font-size: 12.5px;
+  font-weight: 550;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.sim-check input {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.sim-tree-empty {
+  max-width: 720px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.sim-tree-empty b {
+  color: var(--text);
+}
+
+/* área da árvore: rola nos dois sentidos; os botões ficam no canto */
+.sim-tree-wrap {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+.sim-tree-scroll {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background-color: var(--canvas);
+  background-image: radial-gradient(circle, color-mix(in srgb, var(--grid) 70%, transparent) 1px, transparent 1.2px);
+  background-size: 20px 20px;
+  scrollbar-width: thin;
+}
+.sim-tree-canvas {
+  position: relative;
+}
+.sim-tree-edges {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+.sim-tree-edges path {
+  fill: none;
+  stroke: color-mix(in srgb, var(--edge) 70%, transparent);
+  stroke-width: 1.4;
+}
+.sim-tree-edges path.is-path {
+  stroke: var(--accent);
+  stroke-width: 2.4;
+}
+
+/* rótulo da regra, em cima do fim da ligação */
+.sim-tree-rule {
+  position: absolute;
+  height: 18px;
+  box-sizing: border-box;
+  padding: 0 5px;
+  border-radius: 6px;
+  background: var(--canvas);
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 18px;
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.sim-tree-rule.is-path {
+  background: color-mix(in srgb, var(--accent) 12%, var(--canvas));
+  color: var(--accent);
+}
+.sim-tree-rule .eps {
+  color: var(--epsilon);
+}
+
+/* nó: a ID com o ícone do status */
+.sim-tree-node {
+  --st: var(--border-strong);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  box-sizing: border-box;
+  padding: 0 9px 0 7px;
+  border: 1.5px solid color-mix(in srgb, var(--st) 55%, var(--border));
+  border-radius: 9px;
+  background: var(--panel);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  /* sem tabular-nums: a largura da caixa é medida com os dígitos normais da fonte */
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.2s, background-color 0.2s;
+}
+.sim-tree-node:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-sm);
+}
+.sim-tree-node .ico {
+  display: grid;
+  place-items: center;
+  flex: none;
+  color: var(--st);
+}
+.sim-tree-node .txt {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sim-tree-node .eps {
+  color: var(--epsilon);
+}
+.sim-tree-node.st-accepting {
+  --st: var(--accept);
+  background: color-mix(in srgb, var(--accept) 10%, var(--panel));
+}
+.sim-tree-node.st-dead {
+  --st: var(--reject);
+}
+.sim-tree-node.st-repeated {
+  --st: var(--epsilon);
+  color: color-mix(in srgb, var(--text) 75%, transparent);
+}
+.sim-tree-node.st-unexplored {
+  --st: var(--muted);
+  border-style: dashed;
+  background: transparent;
+  color: var(--muted);
+}
+.sim-tree-node.st-expanded {
+  --st: var(--muted);
+}
+/* caminho mostrado e passo atual */
+.sim-tree-node.is-path {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.sim-tree-node.is-current {
+  --hl: var(--active);
+  border-color: var(--hl);
+  border-width: 2px;
+  background: color-mix(in srgb, var(--hl) 16%, var(--panel));
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--hl) 24%, transparent),
+    0 0 16px color-mix(in srgb, var(--hl) 30%, transparent);
+}
+.sim-tree-node.is-current.tone-accepted {
+  --hl: var(--accept);
+}
+.sim-tree-node.is-current.tone-rejected {
+  --hl: var(--reject);
+}
+
+/* "+N" (abrir) e "−" (esconder) */
+.sim-tree-toggle {
+  position: absolute;
+  height: 20px;
+  padding: 0 7px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 18px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+.sim-tree-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.sim-tree-toggle.is-close {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 12px;
+  line-height: 13px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.sim-tree-item:hover .sim-tree-toggle.is-close,
+.sim-tree-toggle.is-close:focus-visible {
+  opacity: 1;
+}
+
+.sim-tree-actions {
+  position: absolute;
+  bottom: 16px;
+  right: 14px;
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel);
+  box-shadow: var(--shadow-sm);
+}
+
+/* rodapé: legenda */
+.sim-tree-foot {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+.sim-tree-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 550;
+}
+.sim-tree-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.sim-tree-legend .st-accepting svg {
+  color: var(--accept);
+}
+.sim-tree-legend .st-expanded svg {
+  color: var(--muted);
+}
+.sim-tree-legend .st-dead svg {
+  color: var(--reject);
+}
+.sim-tree-legend .st-repeated svg {
+  color: var(--epsilon);
+}
+.sim-tree-legend .st-unexplored svg {
+  color: var(--muted);
+  opacity: 0.8;
+}
+.sim-tree-hint {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 12px;
+}
+.sim-tree-foot .sim-link {
+  margin-left: auto;
+  font-size: 12.5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sim-tree-node,
+  .sim-tree-toggle {
+    transition: none;
+  }
+}
+/* o estado da ID da MT: só a cor (o peso igual ao resto deixa a largura medida certa) */
+.sim-tree-node .sim-id-state {
+  color: var(--accent);
+  font-weight: inherit;
+}

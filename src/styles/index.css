@@ -1,0 +1,114 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter';
+@import './editor.css';
+
+/*
+ * Tokens de cor. Tema claro por padrão; escuro com <html data-theme="dark">.
+ *
+ * Os seletores [data-theme] também valem em qualquer elemento: a exportação
+ * PNG/SVG lê os tokens do tema claro num elemento escondido.
+ */
+:root,
+[data-theme='light'] {
+  /* moldura */
+  --bg: #eceef2;
+  --panel: #ffffff;
+  --panel-2: #eef0f4;
+  --border: #d3d6de;
+  --border-strong: #b4b8c4;
+  --text: #111117;
+  --muted: #4d4f5c;
+  --accent: #4338ca;
+  --accent-hover: #3730a3;
+  --accent-contrast: #ffffff;
+  --accent-soft: rgb(67 56 202 / 0.14);
+  --accept: #15803d;
+  --reject: #b91c1c;
+  --active: #d97706;
+
+  /* canvas */
+  --canvas: #f2f3f6;
+  --grid: #b0b5c2;
+  --node-fill: #ffffff;
+  --node-stroke: #23232b;
+  --node-text: #111117;
+  --edge: #42434f;
+  --edge-hover: #1d1e25;
+  --edge-text: #15151b;
+  --label-bg: #ffffff;
+  --label-border: #c4c7d1;
+  --epsilon: #6d28d9;
+  --export-bg: #ffffff;
+
+  /* selo do tipo da aba (AF, AP, MT) */
+  --kind-fa: #4338ca;
+  --kind-pda: #0f766e;
+  --kind-tm: #c2410c;
+
+  /* sombras */
+  --shadow-xs: 0 1px 2px rgb(20 20 40 / 0.1);
+  --shadow-sm: 0 1px 2px rgb(20 20 40 / 0.1), 0 2px 6px rgb(20 20 40 / 0.08);
+  --shadow-md: 0 2px 4px rgb(20 20 40 / 0.08), 0 8px 24px rgb(20 20 40 / 0.14);
+  --shadow-lg: 0 4px 10px rgb(20 20 40 / 0.1), 0 18px 48px rgb(20 20 40 / 0.2);
+  --node-shadow: 0 1px 2px rgb(20 20 40 / 0.12), 0 4px 12px rgb(20 20 40 / 0.1);
+  --overlay: rgb(15 15 25 / 0.36);
+  color-scheme: light;
+}
+
+:root[data-theme='dark'],
+[data-theme='dark'] {
+  --bg: #09090c;
+  --panel: #15151b;
+  --panel-2: #20202a;
+  --border: #363643;
+  --border-strong: #4c4c5c;
+  --text: #f5f5f9;
+  --muted: #b3b3c2;
+  --accent: #959cff;
+  --accent-hover: #b0b5ff;
+  --accent-contrast: #0e0e18;
+  --accent-soft: rgb(149 156 255 / 0.2);
+  --accept: #4ade80;
+  --reject: #f87171;
+  --active: #fbbf24;
+
+  --canvas: #0d0d11;
+  --grid: #3a3a48;
+  --node-fill: #1b1b23;
+  --node-stroke: #dcdce6;
+  --node-text: #f7f7fa;
+  --edge: #a6a7b6;
+  --edge-hover: #e2e2ea;
+  --edge-text: #f0f0f5;
+  --label-bg: #1b1b23;
+  --label-border: #474757;
+  --epsilon: #c4b5fd;
+  --export-bg: #ffffff;
+
+  --kind-fa: #a5abff;
+  --kind-pda: #5eead4;
+  --kind-tm: #fdba74;
+
+  --shadow-xs: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4), 0 2px 8px rgb(0 0 0 / 0.3);
+  --shadow-md: 0 2px 6px rgb(0 0 0 / 0.35), 0 10px 28px rgb(0 0 0 / 0.45);
+  --shadow-lg: 0 6px 14px rgb(0 0 0 / 0.4), 0 22px 56px rgb(0 0 0 / 0.55);
+  --node-shadow: 0 1px 2px rgb(0 0 0 / 0.5), 0 6px 16px rgb(0 0 0 / 0.35);
+  --overlay: rgb(0 0 0 / 0.5);
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter Variable', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

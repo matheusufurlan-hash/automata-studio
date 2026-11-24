@@ -1,0 +1,1831 @@
+{
+  "generator": "tools/oraculo/GerarOraculoAP.java",
+  "yaas": "YAAS-1.0.7.jar",
+  "hash": "sha256 das palavras aceitas de cada tamanho, ordenadas e juntadas com \\n",
+  "examples": [
+    {
+      "id": "ap-palindromo-par",
+      "source": "PDAExamples.createPDAEvenPalindromeFinalState",
+      "acceptance": "FINAL_STATE",
+      "type": "PDA",
+      "alphabet": ["0", "1"],
+      "stackAlphabet": ["0", "1", "Z"],
+      "startStackSymbol": "Z",
+      "maxLength": 6,
+      "structure": {
+        "states": [
+          {
+            "name": "q0",
+            "x": 100,
+            "y": 200,
+            "initial": true,
+            "final": false
+          },
+          {
+            "name": "q1",
+            "x": 250,
+            "y": 200,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q2",
+            "x": 400,
+            "y": 200,
+            "initial": false,
+            "final": true
+          }
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 0,
+            "rules": [
+              {
+                "read": "0",
+                "pop": "0",
+                "push": "00",
+                "yaas": "PUSH 0,0/00"
+              },
+              {
+                "read": "0",
+                "pop": "1",
+                "push": "01",
+                "yaas": "PUSH 0,1/01"
+              },
+              {
+                "read": "0",
+                "pop": "Z",
+                "push": "0Z",
+                "yaas": "PUSH 0,Z/0Z"
+              },
+              {
+                "read": "1",
+                "pop": "0",
+                "push": "10",
+                "yaas": "PUSH 1,0/10"
+              },
+              {
+                "read": "1",
+                "pop": "1",
+                "push": "11",
+                "yaas": "PUSH 1,1/11"
+              },
+              {
+                "read": "1",
+                "pop": "Z",
+                "push": "1Z",
+                "yaas": "PUSH 1,Z/1Z"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 0,
+            "to": 1,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "0",
+                "push": "0",
+                "yaas": "DO_NOTHING ε,0/0"
+              },
+              {
+                "read": "ε",
+                "pop": "1",
+                "push": "1",
+                "yaas": "DO_NOTHING ε,1/1"
+              },
+              {
+                "read": "ε",
+                "pop": "Z",
+                "push": "Z",
+                "yaas": "DO_NOTHING ε,Z/Z"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 1,
+            "to": 1,
+            "rules": [
+              {
+                "read": "0",
+                "pop": "0",
+                "push": "",
+                "yaas": "POP 0,0/ε"
+              },
+              {
+                "read": "1",
+                "pop": "1",
+                "push": "",
+                "yaas": "POP 1,1/ε"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 1,
+            "to": 2,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "Z",
+                "push": "Z",
+                "yaas": "DO_NOTHING ε,Z/Z"
+              }
+            ],
+            "curvature": 0.0
+          }
+        ]
+      },
+      "accepted": {
+        "counts": [1, 0, 2, 0, 4, 0, 8],
+        "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "1e86aca9b2083ec0fbd7103d6ec4b530fe4abd6a0973c5d1edc64844492cc2b6", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "435bc672edf74e2bfd5511a7752eae50716301e8a1f8b6cf948ab26d986e24bc", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "fb39f2d029d6a4cd3e107e083f017be46d99325003c57ab965352c095d31d4fd"],
+        "words": ["", "00", "11", "0000", "0110", "1001", "1111", "000000", "001100", "010010", "011110", "100001", "101101", "110011", "111111"]
+      },
+      "conversion": {
+        "algorithm": "PDAFinalStateToEmptyStack",
+        "acceptance": "EMPTY_STACK",
+        "states": 5,
+        "transitions": 7,
+        "rules": 21,
+        "startStackSymbol": "X",
+        "accepted": {
+          "counts": [1, 0, 2, 0, 4, 0, 8],
+          "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "1e86aca9b2083ec0fbd7103d6ec4b530fe4abd6a0973c5d1edc64844492cc2b6", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "435bc672edf74e2bfd5511a7752eae50716301e8a1f8b6cf948ab26d986e24bc", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "fb39f2d029d6a4cd3e107e083f017be46d99325003c57ab965352c095d31d4fd"],
+          "words": ["", "00", "11", "0000", "0110", "1001", "1111", "000000", "001100", "010010", "011110", "100001", "101101", "110011", "111111"]
+        }
+      }
+    },
+    {
+      "id": "ap-comeca-com-0",
+      "source": "PDAExamples.createPDA01FinalState",
+      "acceptance": "FINAL_STATE",
+      "type": "PDA",
+      "alphabet": ["0", "1"],
+      "stackAlphabet": ["X", "Z"],
+      "startStackSymbol": "Z",
+      "maxLength": 6,
+      "structure": {
+        "states": [
+          {
+            "name": "q0",
+            "x": 100,
+            "y": 200,
+            "initial": true,
+            "final": false
+          },
+          {
+            "name": "q1",
+            "x": 250,
+            "y": 200,
+            "initial": false,
+            "final": true
+          }
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 0,
+            "rules": [
+              {
+                "read": "0",
+                "pop": "X",
+                "push": "XX",
+                "yaas": "PUSH 0,X/XX"
+              },
+              {
+                "read": "0",
+                "pop": "Z",
+                "push": "XZ",
+                "yaas": "PUSH 0,Z/XZ"
+              },
+              {
+                "read": "1",
+                "pop": "X",
+                "push": "X",
+                "yaas": "DO_NOTHING 1,X/X"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 0,
+            "to": 1,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "X",
+                "push": "",
+                "yaas": "POP ε,X/ε"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 1,
+            "to": 1,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "X",
+                "push": "",
+                "yaas": "POP ε,X/ε"
+              },
+              {
+                "read": "1",
+                "pop": "X",
+                "push": "XX",
+                "yaas": "PUSH 1,X/XX"
+              },
+              {
+                "read": "1",
+                "pop": "Z",
+                "push": "",
+                "yaas": "POP 1,Z/ε"
+              }
+            ],
+            "loopAngle": 0
+          }
+        ]
+      },
+      "accepted": {
+        "counts": [0, 1, 2, 4, 8, 16, 32],
+        "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9", "072254dd0153f2a365b176c582d6f4e1523cc5c2b9a8dbb0379b0f08110037d4", "2fc43c7e20b6ca2c8d466942a45465537d2d766426b1b7b618f4c07f5ded9987", "4b80a0eeb6e90d70f0c0f075ef00608bde92020af1253857c215b049b0ad50df", "63b2f7f6f478b6b9ddf1c31087e9e1a4416fdb661a6e5ea91e018b342c6de1e0", "129bdd779db9580c4a49c6ee30c04f72fa0302bb5987b104b7ccf48a6fd77aad"],
+        "words": ["0", "00", "01", "000", "001", "010", "011", "0000", "0001", "0010", "0011", "0100", "0101", "0110", "0111", "00000", "00001", "00010", "00011", "00100", "00101", "00110", "00111", "01000", "01001", "01010", "01011", "01100", "01101", "01110", "01111", "000000", "000001", "000010", "000011", "000100", "000101", "000110", "000111", "001000", "001001", "001010", "001011", "001100", "001101", "001110", "001111", "010000", "010001", "010010", "010011", "010100", "010101", "010110", "010111", "011000", "011001", "011010", "011011", "011100", "011101", "011110", "011111"]
+      },
+      "conversion": {
+        "algorithm": "PDAFinalStateToEmptyStack",
+        "acceptance": "EMPTY_STACK",
+        "states": 4,
+        "transitions": 6,
+        "rules": 14,
+        "startStackSymbol": "A",
+        "accepted": {
+          "counts": [0, 1, 2, 4, 8, 16, 32],
+          "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9", "072254dd0153f2a365b176c582d6f4e1523cc5c2b9a8dbb0379b0f08110037d4", "2fc43c7e20b6ca2c8d466942a45465537d2d766426b1b7b618f4c07f5ded9987", "4b80a0eeb6e90d70f0c0f075ef00608bde92020af1253857c215b049b0ad50df", "63b2f7f6f478b6b9ddf1c31087e9e1a4416fdb661a6e5ea91e018b342c6de1e0", "129bdd779db9580c4a49c6ee30c04f72fa0302bb5987b104b7ccf48a6fd77aad"],
+          "words": ["0", "00", "01", "000", "001", "010", "011", "0000", "0001", "0010", "0011", "0100", "0101", "0110", "0111", "00000", "00001", "00010", "00011", "00100", "00101", "00110", "00111", "01000", "01001", "01010", "01011", "01100", "01101", "01110", "01111", "000000", "000001", "000010", "000011", "000100", "000101", "000110", "000111", "001000", "001001", "001010", "001011", "001100", "001101", "001110", "001111", "010000", "010001", "010010", "010011", "010100", "010101", "010110", "010111", "011000", "011001", "011010", "011011", "011100", "011101", "011110", "011111"]
+        }
+      }
+    },
+    {
+      "id": "ap-0n1n",
+      "source": "PDAExamples.createPDA0n1nFinalState",
+      "acceptance": "FINAL_STATE",
+      "type": "PDA",
+      "alphabet": ["0", "1"],
+      "stackAlphabet": ["X", "Z"],
+      "startStackSymbol": "Z",
+      "maxLength": 6,
+      "structure": {
+        "states": [
+          {
+            "name": "q0",
+            "x": 100,
+            "y": 200,
+            "initial": true,
+            "final": false
+          },
+          {
+            "name": "q1",
+            "x": 250,
+            "y": 200,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q2",
+            "x": 400,
+            "y": 200,
+            "initial": false,
+            "final": true
+          }
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 0,
+            "rules": [
+              {
+                "read": "0",
+                "pop": "X",
+                "push": "XX",
+                "yaas": "PUSH 0,X/XX"
+              },
+              {
+                "read": "0",
+                "pop": "Z",
+                "push": "XZ",
+                "yaas": "PUSH 0,Z/XZ"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 0,
+            "to": 1,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "X",
+                "push": "X",
+                "yaas": "DO_NOTHING ε,X/X"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 1,
+            "to": 1,
+            "rules": [
+              {
+                "read": "1",
+                "pop": "X",
+                "push": "",
+                "yaas": "POP 1,X/ε"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 1,
+            "to": 2,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "Z",
+                "push": "Z",
+                "yaas": "DO_NOTHING ε,Z/Z"
+              }
+            ],
+            "curvature": 0.0
+          }
+        ]
+      },
+      "accepted": {
+        "counts": [0, 0, 1, 0, 1, 0, 1],
+        "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "938db8c9f82c8cb58d3f3ef4fd250036a48d26a712753d2fde5abd03a85cabf4", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "a8d0b6f0939cfd883251f62b265f971ef8a5ab97eee32b91460f08b965601d93", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "4718021fe01050dbde3316fb352f7f00769ba43127b16224fad4485efaa7dae8"],
+        "words": ["01", "0011", "000111"]
+      },
+      "conversion": {
+        "algorithm": "PDAFinalStateToEmptyStack",
+        "acceptance": "EMPTY_STACK",
+        "states": 5,
+        "transitions": 7,
+        "rules": 12,
+        "startStackSymbol": "A",
+        "accepted": {
+          "counts": [0, 0, 1, 0, 1, 0, 1],
+          "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "938db8c9f82c8cb58d3f3ef4fd250036a48d26a712753d2fde5abd03a85cabf4", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "a8d0b6f0939cfd883251f62b265f971ef8a5ab97eee32b91460f08b965601d93", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "4718021fe01050dbde3316fb352f7f00769ba43127b16224fad4485efaa7dae8"],
+          "words": ["01", "0011", "000111"]
+        }
+      }
+    },
+    {
+      "id": "ap-mesmo-numero-de-0-e-1",
+      "source": "PDAExamples.createPDA01SameFinalState",
+      "acceptance": "FINAL_STATE",
+      "type": "PDA",
+      "alphabet": ["0", "1"],
+      "stackAlphabet": ["X", "Y", "Z"],
+      "startStackSymbol": "Z",
+      "maxLength": 6,
+      "structure": {
+        "states": [
+          {
+            "name": "q0",
+            "x": 175,
+            "y": 225,
+            "initial": true,
+            "final": false
+          },
+          {
+            "name": "q1",
+            "x": 325,
+            "y": 225,
+            "initial": false,
+            "final": true
+          }
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 0,
+            "rules": [
+              {
+                "read": "0",
+                "pop": "X",
+                "push": "XX",
+                "yaas": "PUSH 0,X/XX"
+              },
+              {
+                "read": "0",
+                "pop": "Y",
+                "push": "",
+                "yaas": "POP 0,Y/ε"
+              },
+              {
+                "read": "0",
+                "pop": "Z",
+                "push": "XZ",
+                "yaas": "PUSH 0,Z/XZ"
+              },
+              {
+                "read": "1",
+                "pop": "X",
+                "push": "",
+                "yaas": "POP 1,X/ε"
+              },
+              {
+                "read": "1",
+                "pop": "Y",
+                "push": "YY",
+                "yaas": "PUSH 1,Y/YY"
+              },
+              {
+                "read": "1",
+                "pop": "Z",
+                "push": "YZ",
+                "yaas": "PUSH 1,Z/YZ"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 0,
+            "to": 1,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "Z",
+                "push": "Z",
+                "yaas": "DO_NOTHING ε,Z/Z"
+              }
+            ],
+            "curvature": 0.0
+          }
+        ]
+      },
+      "accepted": {
+        "counts": [1, 0, 2, 0, 6, 0, 20],
+        "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "077ed22a37eb5edf876120b4956ad8ec62bae647a094503e255094c9cb8d829f", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "ff6522a2ac4cb0964e572bc1f4a676ac4ab3c8e4fc4bca9e4d738a678d11a583", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "91ee1a19dd2f7b590431e8a611f4e13d4a8945bc2ac30e22cbe728fd28511eed"],
+        "words": ["", "01", "10", "0011", "0101", "0110", "1001", "1010", "1100", "000111", "001011", "001101", "001110", "010011", "010101", "010110", "011001", "011010", "011100", "100011", "100101", "100110", "101001", "101010", "101100", "110001", "110010", "110100", "111000"]
+      },
+      "conversion": {
+        "algorithm": "PDAFinalStateToEmptyStack",
+        "acceptance": "EMPTY_STACK",
+        "states": 4,
+        "transitions": 5,
+        "rules": 16,
+        "startStackSymbol": "A",
+        "accepted": {
+          "counts": [1, 0, 2, 0, 6, 0, 20],
+          "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "077ed22a37eb5edf876120b4956ad8ec62bae647a094503e255094c9cb8d829f", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "ff6522a2ac4cb0964e572bc1f4a676ac4ab3c8e4fc4bca9e4d738a678d11a583", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "91ee1a19dd2f7b590431e8a611f4e13d4a8945bc2ac30e22cbe728fd28511eed"],
+          "words": ["", "01", "10", "0011", "0101", "0110", "1001", "1010", "1100", "000111", "001011", "001101", "001110", "010011", "010101", "010110", "011001", "011010", "011100", "100011", "100101", "100110", "101001", "101010", "101100", "110001", "110010", "110100", "111000"]
+        }
+      }
+    },
+    {
+      "id": "ap-aibjck",
+      "source": "PDAExamples.createPDAAiBjCkFinalState",
+      "acceptance": "FINAL_STATE",
+      "type": "PDA",
+      "alphabet": ["a", "b", "c"],
+      "stackAlphabet": ["X", "Z"],
+      "startStackSymbol": "Z",
+      "maxLength": 6,
+      "structure": {
+        "states": [
+          {
+            "name": "q0",
+            "x": 100,
+            "y": 225,
+            "initial": true,
+            "final": false
+          },
+          {
+            "name": "q1",
+            "x": 275,
+            "y": 100,
+            "initial": false,
+            "final": true
+          },
+          {
+            "name": "q2",
+            "x": 275,
+            "y": 225,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q3",
+            "x": 425,
+            "y": 225,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q4",
+            "x": 275,
+            "y": 350,
+            "initial": false,
+            "final": true
+          },
+          {
+            "name": "q5",
+            "x": 425,
+            "y": 350,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q6",
+            "x": 575,
+            "y": 350,
+            "initial": false,
+            "final": false
+          }
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "Z",
+                "push": "Z",
+                "yaas": "DO_NOTHING ε,Z/Z"
+              }
+            ],
+            "curvature": 0.1
+          },
+          {
+            "from": 0,
+            "to": 2,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "Z",
+                "push": "Z",
+                "yaas": "DO_NOTHING ε,Z/Z"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 0,
+            "to": 4,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "Z",
+                "push": "Z",
+                "yaas": "DO_NOTHING ε,Z/Z"
+              }
+            ],
+            "curvature": -0.1
+          },
+          {
+            "from": 1,
+            "to": 1,
+            "rules": [
+              {
+                "read": "c",
+                "pop": "Z",
+                "push": "Z",
+                "yaas": "DO_NOTHING c,Z/Z"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 2,
+            "to": 2,
+            "rules": [
+              {
+                "read": "a",
+                "pop": "X",
+                "push": "XX",
+                "yaas": "PUSH a,X/XX"
+              },
+              {
+                "read": "a",
+                "pop": "Z",
+                "push": "XZ",
+                "yaas": "PUSH a,Z/XZ"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 4,
+            "to": 4,
+            "rules": [
+              {
+                "read": "a",
+                "pop": "Z",
+                "push": "Z",
+                "yaas": "DO_NOTHING a,Z/Z"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 2,
+            "to": 3,
+            "rules": [
+              {
+                "read": "b",
+                "pop": "X",
+                "push": "",
+                "yaas": "POP b,X/ε"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 3,
+            "to": 3,
+            "rules": [
+              {
+                "read": "b",
+                "pop": "X",
+                "push": "",
+                "yaas": "POP b,X/ε"
+              }
+            ],
+            "loopAngle": 25
+          },
+          {
+            "from": 3,
+            "to": 1,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "Z",
+                "push": "Z",
+                "yaas": "DO_NOTHING ε,Z/Z"
+              }
+            ],
+            "curvature": -0.1
+          },
+          {
+            "from": 4,
+            "to": 5,
+            "rules": [
+              {
+                "read": "b",
+                "pop": "Z",
+                "push": "XZ",
+                "yaas": "PUSH b,Z/XZ"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 5,
+            "to": 5,
+            "rules": [
+              {
+                "read": "b",
+                "pop": "X",
+                "push": "XX",
+                "yaas": "PUSH b,X/XX"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 5,
+            "to": 6,
+            "rules": [
+              {
+                "read": "c",
+                "pop": "X",
+                "push": "",
+                "yaas": "POP c,X/ε"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 6,
+            "to": 6,
+            "rules": [
+              {
+                "read": "c",
+                "pop": "X",
+                "push": "",
+                "yaas": "POP c,X/ε"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 6,
+            "to": 4,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "Z",
+                "push": "",
+                "yaas": "POP ε,Z/ε"
+              }
+            ],
+            "curvature": 0.15
+          }
+        ]
+      },
+      "accepted": {
+        "counts": [1, 2, 4, 3, 6, 6, 7],
+        "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "9e58d7137c654f526a7a7c9cbab79c2e859b4dfbb579d1d6dd3aa4113a8a909b", "92b5c326527f53a81064e2175989575b5ddcab7d5323a976d4b42736a81167c4", "caa3b4ff8a41c6d66a73a4381ebd90dc8cfbddcc65f1fbb5e336ea681de96e4e", "8faf2649176f677220317127b1b24d98c867b1b9e3f6b01aa3fb83f4ffb9f05c", "ece8f65e53922b7c635a12273a7ea9aab1b4d09d50db328d0fb0bdad36c52056", "690e523492d2e655bafeca95f5aa5dfaafcf308fd916a7d2ddebf63691b4a66f"],
+        "words": ["", "a", "c", "aa", "ab", "bc", "cc", "aaa", "abc", "ccc", "aaaa", "aabb", "aabc", "abcc", "bbcc", "cccc", "aaaaa", "aaabc", "aabbc", "abbcc", "abccc", "ccccc", "aaaaaa", "aaaabc", "aaabbb", "aabbcc", "abcccc", "bbbccc", "cccccc"]
+      },
+      "conversion": {
+        "algorithm": "PDAFinalStateToEmptyStack",
+        "acceptance": "EMPTY_STACK",
+        "states": 9,
+        "transitions": 18,
+        "rules": 25,
+        "startStackSymbol": "A",
+        "accepted": {
+          "counts": [1, 2, 4, 3, 6, 6, 7],
+          "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "9e58d7137c654f526a7a7c9cbab79c2e859b4dfbb579d1d6dd3aa4113a8a909b", "92b5c326527f53a81064e2175989575b5ddcab7d5323a976d4b42736a81167c4", "caa3b4ff8a41c6d66a73a4381ebd90dc8cfbddcc65f1fbb5e336ea681de96e4e", "8faf2649176f677220317127b1b24d98c867b1b9e3f6b01aa3fb83f4ffb9f05c", "ece8f65e53922b7c635a12273a7ea9aab1b4d09d50db328d0fb0bdad36c52056", "690e523492d2e655bafeca95f5aa5dfaafcf308fd916a7d2ddebf63691b4a66f"],
+          "words": ["", "a", "c", "aa", "ab", "bc", "cc", "aaa", "abc", "ccc", "aaaa", "aabb", "aabc", "abcc", "bbcc", "cccc", "aaaaa", "aaabc", "aabbc", "abbcc", "abccc", "ccccc", "aaaaaa", "aaaabc", "aaabbb", "aabbcc", "abcccc", "bbbccc", "cccccc"]
+        }
+      }
+    },
+    {
+      "id": "ap-0-vale-dois",
+      "source": "PDAExamples.createPDATest0Double1FinalState",
+      "acceptance": "FINAL_STATE",
+      "type": "PDA",
+      "alphabet": ["0", "1"],
+      "stackAlphabet": ["X", "Y", "Z"],
+      "startStackSymbol": "Z",
+      "maxLength": 6,
+      "structure": {
+        "states": [
+          {
+            "name": "q0",
+            "x": 100,
+            "y": 200,
+            "initial": true,
+            "final": false
+          },
+          {
+            "name": "q1",
+            "x": 225,
+            "y": 100,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q3",
+            "x": 225,
+            "y": 300,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q4",
+            "x": 425,
+            "y": 200,
+            "initial": false,
+            "final": true
+          }
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 0,
+            "rules": [
+              {
+                "read": "0",
+                "pop": "X",
+                "push": "XXX",
+                "yaas": "PUSH 0,X/XXX"
+              },
+              {
+                "read": "0",
+                "pop": "Z",
+                "push": "XXZ",
+                "yaas": "PUSH 0,Z/XXZ"
+              },
+              {
+                "read": "1",
+                "pop": "Y",
+                "push": "YY",
+                "yaas": "PUSH 1,Y/YY"
+              },
+              {
+                "read": "1",
+                "pop": "Z",
+                "push": "YZ",
+                "yaas": "PUSH 1,Z/YZ"
+              }
+            ],
+            "loopAngle": -25
+          },
+          {
+            "from": 0,
+            "to": 1,
+            "rules": [
+              {
+                "read": "1",
+                "pop": "X",
+                "push": "",
+                "yaas": "POP 1,X/ε"
+              }
+            ],
+            "curvature": 0.17
+          },
+          {
+            "from": 1,
+            "to": 0,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "X",
+                "push": "",
+                "yaas": "POP ε,X/ε"
+              },
+              {
+                "read": "ε",
+                "pop": "Z",
+                "push": "YZ",
+                "yaas": "PUSH ε,Z/YZ"
+              }
+            ],
+            "curvature": 0.11
+          },
+          {
+            "from": 0,
+            "to": 2,
+            "rules": [
+              {
+                "read": "0",
+                "pop": "Y",
+                "push": "",
+                "yaas": "POP 0,Y/ε"
+              }
+            ],
+            "curvature": 0.13
+          },
+          {
+            "from": 2,
+            "to": 0,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "Z",
+                "push": "Z",
+                "yaas": "DO_NOTHING ε,Z/Z"
+              },
+              {
+                "read": "0",
+                "pop": "Y",
+                "push": "",
+                "yaas": "POP 0,Y/ε"
+              }
+            ],
+            "curvature": 0.16
+          },
+          {
+            "from": 0,
+            "to": 3,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "Z",
+                "push": "Z",
+                "yaas": "DO_NOTHING ε,Z/Z"
+              }
+            ],
+            "curvature": 0.0
+          }
+        ]
+      },
+      "accepted": {
+        "counts": [1, 0, 2, 0, 6, 0, 19],
+        "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "077ed22a37eb5edf876120b4956ad8ec62bae647a094503e255094c9cb8d829f", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "ff6522a2ac4cb0964e572bc1f4a676ac4ab3c8e4fc4bca9e4d738a678d11a583", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "595d6d58d911e534982386da9e146c96d1b5da3d4b96a878ff902b1d276e3ecd"],
+        "words": ["", "01", "10", "0011", "0101", "0110", "1001", "1010", "1100", "000111", "001011", "001101", "001110", "010011", "010101", "010110", "011001", "011010", "011100", "100011", "100101", "100110", "101001", "101010", "101100", "110001", "110010", "111000"]
+      },
+      "conversion": {
+        "algorithm": "PDAFinalStateToEmptyStack",
+        "acceptance": "EMPTY_STACK",
+        "states": 6,
+        "transitions": 9,
+        "rules": 20,
+        "startStackSymbol": "A",
+        "accepted": {
+          "counts": [1, 0, 2, 0, 6, 0, 19],
+          "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "077ed22a37eb5edf876120b4956ad8ec62bae647a094503e255094c9cb8d829f", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "ff6522a2ac4cb0964e572bc1f4a676ac4ab3c8e4fc4bca9e4d738a678d11a583", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "595d6d58d911e534982386da9e146c96d1b5da3d4b96a878ff902b1d276e3ecd"],
+          "words": ["", "01", "10", "0011", "0101", "0110", "1001", "1010", "1100", "000111", "001011", "001101", "001110", "010011", "010101", "010110", "011001", "011010", "011100", "100011", "100101", "100110", "101001", "101010", "101100", "110001", "110010", "111000"]
+        }
+      }
+    },
+    {
+      "id": "ap-palindromo-par-pilha-vazia",
+      "source": "PDAExamples.createPDAEvenPalindromeEmptyStack",
+      "acceptance": "EMPTY_STACK",
+      "type": "PDA",
+      "alphabet": ["0", "1"],
+      "stackAlphabet": ["0", "1", "Z"],
+      "startStackSymbol": "Z",
+      "maxLength": 6,
+      "structure": {
+        "states": [
+          {
+            "name": "q0",
+            "x": 100,
+            "y": 200,
+            "initial": true,
+            "final": false
+          },
+          {
+            "name": "q1",
+            "x": 250,
+            "y": 200,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q2",
+            "x": 400,
+            "y": 200,
+            "initial": false,
+            "final": false
+          }
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 0,
+            "rules": [
+              {
+                "read": "0",
+                "pop": "0",
+                "push": "00",
+                "yaas": "PUSH 0,0/00"
+              },
+              {
+                "read": "0",
+                "pop": "1",
+                "push": "01",
+                "yaas": "PUSH 0,1/01"
+              },
+              {
+                "read": "0",
+                "pop": "Z",
+                "push": "0Z",
+                "yaas": "PUSH 0,Z/0Z"
+              },
+              {
+                "read": "1",
+                "pop": "0",
+                "push": "10",
+                "yaas": "PUSH 1,0/10"
+              },
+              {
+                "read": "1",
+                "pop": "1",
+                "push": "11",
+                "yaas": "PUSH 1,1/11"
+              },
+              {
+                "read": "1",
+                "pop": "Z",
+                "push": "1Z",
+                "yaas": "PUSH 1,Z/1Z"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 0,
+            "to": 1,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "0",
+                "push": "0",
+                "yaas": "DO_NOTHING ε,0/0"
+              },
+              {
+                "read": "ε",
+                "pop": "1",
+                "push": "1",
+                "yaas": "DO_NOTHING ε,1/1"
+              },
+              {
+                "read": "ε",
+                "pop": "Z",
+                "push": "Z",
+                "yaas": "DO_NOTHING ε,Z/Z"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 1,
+            "to": 1,
+            "rules": [
+              {
+                "read": "0",
+                "pop": "0",
+                "push": "",
+                "yaas": "POP 0,0/ε"
+              },
+              {
+                "read": "1",
+                "pop": "1",
+                "push": "",
+                "yaas": "POP 1,1/ε"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 1,
+            "to": 2,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "Z",
+                "push": "",
+                "yaas": "POP ε,Z/ε"
+              }
+            ],
+            "curvature": 0.0
+          }
+        ]
+      },
+      "accepted": {
+        "counts": [1, 0, 2, 0, 4, 0, 8],
+        "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "1e86aca9b2083ec0fbd7103d6ec4b530fe4abd6a0973c5d1edc64844492cc2b6", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "435bc672edf74e2bfd5511a7752eae50716301e8a1f8b6cf948ab26d986e24bc", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "fb39f2d029d6a4cd3e107e083f017be46d99325003c57ab965352c095d31d4fd"],
+        "words": ["", "00", "11", "0000", "0110", "1001", "1111", "000000", "001100", "010010", "011110", "100001", "101101", "110011", "111111"]
+      },
+      "conversion": {
+        "algorithm": "PDAEmptyStackToFinalState",
+        "acceptance": "FINAL_STATE",
+        "states": 5,
+        "transitions": 8,
+        "rules": 16,
+        "startStackSymbol": "X",
+        "accepted": {
+          "counts": [1, 0, 2, 0, 4, 0, 8],
+          "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "1e86aca9b2083ec0fbd7103d6ec4b530fe4abd6a0973c5d1edc64844492cc2b6", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "435bc672edf74e2bfd5511a7752eae50716301e8a1f8b6cf948ab26d986e24bc", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "fb39f2d029d6a4cd3e107e083f017be46d99325003c57ab965352c095d31d4fd"],
+          "words": ["", "00", "11", "0000", "0110", "1001", "1111", "000000", "001100", "010010", "011110", "100001", "101101", "110011", "111111"]
+        }
+      }
+    },
+    {
+      "id": "ap-0n1n-pilha-vazia",
+      "source": "PDAExamples.createPDA0n1nEmptyStack",
+      "acceptance": "EMPTY_STACK",
+      "type": "PDA",
+      "alphabet": ["0", "1"],
+      "stackAlphabet": ["X", "Z"],
+      "startStackSymbol": "Z",
+      "maxLength": 6,
+      "structure": {
+        "states": [
+          {
+            "name": "q0",
+            "x": 100,
+            "y": 200,
+            "initial": true,
+            "final": false
+          },
+          {
+            "name": "q1",
+            "x": 250,
+            "y": 200,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q2",
+            "x": 400,
+            "y": 200,
+            "initial": false,
+            "final": false
+          }
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 0,
+            "rules": [
+              {
+                "read": "0",
+                "pop": "X",
+                "push": "XX",
+                "yaas": "PUSH 0,X/XX"
+              },
+              {
+                "read": "0",
+                "pop": "Z",
+                "push": "XZ",
+                "yaas": "PUSH 0,Z/XZ"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 0,
+            "to": 1,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "X",
+                "push": "X",
+                "yaas": "DO_NOTHING ε,X/X"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 1,
+            "to": 1,
+            "rules": [
+              {
+                "read": "1",
+                "pop": "X",
+                "push": "",
+                "yaas": "POP 1,X/ε"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 1,
+            "to": 2,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "Z",
+                "push": "",
+                "yaas": "POP ε,Z/ε"
+              }
+            ],
+            "curvature": 0.0
+          }
+        ]
+      },
+      "accepted": {
+        "counts": [0, 0, 1, 0, 1, 0, 1],
+        "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "938db8c9f82c8cb58d3f3ef4fd250036a48d26a712753d2fde5abd03a85cabf4", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "a8d0b6f0939cfd883251f62b265f971ef8a5ab97eee32b91460f08b965601d93", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "4718021fe01050dbde3316fb352f7f00769ba43127b16224fad4485efaa7dae8"],
+        "words": ["01", "0011", "000111"]
+      },
+      "conversion": {
+        "algorithm": "PDAEmptyStackToFinalState",
+        "acceptance": "FINAL_STATE",
+        "states": 5,
+        "transitions": 8,
+        "rules": 9,
+        "startStackSymbol": "A",
+        "accepted": {
+          "counts": [0, 0, 1, 0, 1, 0, 1],
+          "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "938db8c9f82c8cb58d3f3ef4fd250036a48d26a712753d2fde5abd03a85cabf4", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "a8d0b6f0939cfd883251f62b265f971ef8a5ab97eee32b91460f08b965601d93", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "4718021fe01050dbde3316fb352f7f00769ba43127b16224fad4485efaa7dae8"],
+          "words": ["01", "0011", "000111"]
+        }
+      }
+    },
+    {
+      "id": "ap-mesmo-numero-de-0-e-1-pilha-vazia",
+      "source": "PDAExamples.createPDA01SameEmptyStack",
+      "acceptance": "EMPTY_STACK",
+      "type": "PDA",
+      "alphabet": ["0", "1"],
+      "stackAlphabet": ["X", "Y", "Z"],
+      "startStackSymbol": "Z",
+      "maxLength": 6,
+      "structure": {
+        "states": [
+          {
+            "name": "q0",
+            "x": 175,
+            "y": 225,
+            "initial": true,
+            "final": false
+          },
+          {
+            "name": "q1",
+            "x": 325,
+            "y": 225,
+            "initial": false,
+            "final": false
+          }
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 0,
+            "rules": [
+              {
+                "read": "0",
+                "pop": "X",
+                "push": "XX",
+                "yaas": "PUSH 0,X/XX"
+              },
+              {
+                "read": "0",
+                "pop": "Y",
+                "push": "",
+                "yaas": "POP 0,Y/ε"
+              },
+              {
+                "read": "0",
+                "pop": "Z",
+                "push": "XZ",
+                "yaas": "PUSH 0,Z/XZ"
+              },
+              {
+                "read": "1",
+                "pop": "X",
+                "push": "",
+                "yaas": "POP 1,X/ε"
+              },
+              {
+                "read": "1",
+                "pop": "Y",
+                "push": "YY",
+                "yaas": "PUSH 1,Y/YY"
+              },
+              {
+                "read": "1",
+                "pop": "Z",
+                "push": "YZ",
+                "yaas": "PUSH 1,Z/YZ"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 0,
+            "to": 1,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "Z",
+                "push": "",
+                "yaas": "POP ε,Z/ε"
+              }
+            ],
+            "curvature": 0.0
+          }
+        ]
+      },
+      "accepted": {
+        "counts": [1, 0, 2, 0, 6, 0, 20],
+        "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "077ed22a37eb5edf876120b4956ad8ec62bae647a094503e255094c9cb8d829f", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "ff6522a2ac4cb0964e572bc1f4a676ac4ab3c8e4fc4bca9e4d738a678d11a583", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "91ee1a19dd2f7b590431e8a611f4e13d4a8945bc2ac30e22cbe728fd28511eed"],
+        "words": ["", "01", "10", "0011", "0101", "0110", "1001", "1010", "1100", "000111", "001011", "001101", "001110", "010011", "010101", "010110", "011001", "011010", "011100", "100011", "100101", "100110", "101001", "101010", "101100", "110001", "110010", "110100", "111000"]
+      },
+      "conversion": {
+        "algorithm": "PDAEmptyStackToFinalState",
+        "acceptance": "FINAL_STATE",
+        "states": 4,
+        "transitions": 5,
+        "rules": 10,
+        "startStackSymbol": "A",
+        "accepted": {
+          "counts": [1, 0, 2, 0, 6, 0, 20],
+          "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "077ed22a37eb5edf876120b4956ad8ec62bae647a094503e255094c9cb8d829f", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "ff6522a2ac4cb0964e572bc1f4a676ac4ab3c8e4fc4bca9e4d738a678d11a583", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "91ee1a19dd2f7b590431e8a611f4e13d4a8945bc2ac30e22cbe728fd28511eed"],
+          "words": ["", "01", "10", "0011", "0101", "0110", "1001", "1010", "1100", "000111", "001011", "001101", "001110", "010011", "010101", "010110", "011001", "011010", "011100", "100011", "100101", "100110", "101001", "101010", "101100", "110001", "110010", "110100", "111000"]
+        }
+      }
+    },
+    {
+      "id": "apd-palindromo-com-marca",
+      "source": "PDAExamples.createDPDAEvenPalindromeCenterMark",
+      "acceptance": "FINAL_STATE",
+      "type": "DPDA",
+      "alphabet": ["0", "1", "c"],
+      "stackAlphabet": ["0", "1", "Z"],
+      "startStackSymbol": "Z",
+      "maxLength": 6,
+      "structure": {
+        "states": [
+          {
+            "name": "q0",
+            "x": 100,
+            "y": 200,
+            "initial": true,
+            "final": false
+          },
+          {
+            "name": "q1",
+            "x": 250,
+            "y": 200,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q2",
+            "x": 400,
+            "y": 200,
+            "initial": false,
+            "final": true
+          }
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 0,
+            "rules": [
+              {
+                "read": "0",
+                "pop": "0",
+                "push": "00",
+                "yaas": "PUSH 0,0/00"
+              },
+              {
+                "read": "0",
+                "pop": "1",
+                "push": "01",
+                "yaas": "PUSH 0,1/01"
+              },
+              {
+                "read": "0",
+                "pop": "Z",
+                "push": "0Z",
+                "yaas": "PUSH 0,Z/0Z"
+              },
+              {
+                "read": "1",
+                "pop": "0",
+                "push": "10",
+                "yaas": "PUSH 1,0/10"
+              },
+              {
+                "read": "1",
+                "pop": "1",
+                "push": "11",
+                "yaas": "PUSH 1,1/11"
+              },
+              {
+                "read": "1",
+                "pop": "Z",
+                "push": "1Z",
+                "yaas": "PUSH 1,Z/1Z"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 0,
+            "to": 1,
+            "rules": [
+              {
+                "read": "c",
+                "pop": "0",
+                "push": "0",
+                "yaas": "DO_NOTHING c,0/0"
+              },
+              {
+                "read": "c",
+                "pop": "1",
+                "push": "1",
+                "yaas": "DO_NOTHING c,1/1"
+              },
+              {
+                "read": "c",
+                "pop": "Z",
+                "push": "Z",
+                "yaas": "DO_NOTHING c,Z/Z"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 1,
+            "to": 1,
+            "rules": [
+              {
+                "read": "0",
+                "pop": "0",
+                "push": "",
+                "yaas": "POP 0,0/ε"
+              },
+              {
+                "read": "1",
+                "pop": "1",
+                "push": "",
+                "yaas": "POP 1,1/ε"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 1,
+            "to": 2,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "Z",
+                "push": "Z",
+                "yaas": "DO_NOTHING ε,Z/Z"
+              }
+            ],
+            "curvature": 0.0
+          }
+        ]
+      },
+      "accepted": {
+        "counts": [0, 1, 0, 2, 0, 4, 0],
+        "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "919cee156d62e01aac4149b2a5d92e00b0a368047f43e03a7a5899a2b8946829", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "1d925a0c7f42a2ece8851cc2f40bf6f0fe0c8ad8cd22c605be90a849d645549f", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"],
+        "words": ["c", "0c0", "1c1", "00c00", "01c10", "10c01", "11c11"]
+      },
+      "conversion": {
+        "algorithm": "PDAFinalStateToEmptyStack",
+        "acceptance": "EMPTY_STACK",
+        "states": 5,
+        "transitions": 7,
+        "rules": 21,
+        "startStackSymbol": "X",
+        "accepted": {
+          "counts": [0, 1, 0, 2, 0, 4, 0],
+          "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "919cee156d62e01aac4149b2a5d92e00b0a368047f43e03a7a5899a2b8946829", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "1d925a0c7f42a2ece8851cc2f40bf6f0fe0c8ad8cd22c605be90a849d645549f", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"],
+          "words": ["c", "0c0", "1c1", "00c00", "01c10", "10c01", "11c11"]
+        }
+      }
+    },
+    {
+      "id": "apd-0n1n",
+      "source": "PDAExamples.createDPDA0n1n",
+      "acceptance": "FINAL_STATE",
+      "type": "DPDA",
+      "alphabet": ["0", "1"],
+      "stackAlphabet": ["X", "Z"],
+      "startStackSymbol": "Z",
+      "maxLength": 6,
+      "structure": {
+        "states": [
+          {
+            "name": "q0",
+            "x": 100,
+            "y": 200,
+            "initial": true,
+            "final": false
+          },
+          {
+            "name": "q1",
+            "x": 250,
+            "y": 200,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q2",
+            "x": 400,
+            "y": 200,
+            "initial": false,
+            "final": true
+          }
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 0,
+            "rules": [
+              {
+                "read": "0",
+                "pop": "X",
+                "push": "XX",
+                "yaas": "PUSH 0,X/XX"
+              },
+              {
+                "read": "0",
+                "pop": "Z",
+                "push": "XZ",
+                "yaas": "PUSH 0,Z/XZ"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 0,
+            "to": 1,
+            "rules": [
+              {
+                "read": "1",
+                "pop": "X",
+                "push": "",
+                "yaas": "POP 1,X/ε"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 1,
+            "to": 1,
+            "rules": [
+              {
+                "read": "1",
+                "pop": "X",
+                "push": "",
+                "yaas": "POP 1,X/ε"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 1,
+            "to": 2,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "Z",
+                "push": "Z",
+                "yaas": "DO_NOTHING ε,Z/Z"
+              }
+            ],
+            "curvature": 0.0
+          }
+        ]
+      },
+      "accepted": {
+        "counts": [0, 0, 1, 0, 1, 0, 1],
+        "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "938db8c9f82c8cb58d3f3ef4fd250036a48d26a712753d2fde5abd03a85cabf4", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "a8d0b6f0939cfd883251f62b265f971ef8a5ab97eee32b91460f08b965601d93", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "4718021fe01050dbde3316fb352f7f00769ba43127b16224fad4485efaa7dae8"],
+        "words": ["01", "0011", "000111"]
+      },
+      "conversion": {
+        "algorithm": "PDAFinalStateToEmptyStack",
+        "acceptance": "EMPTY_STACK",
+        "states": 5,
+        "transitions": 7,
+        "rules": 12,
+        "startStackSymbol": "A",
+        "accepted": {
+          "counts": [0, 0, 1, 0, 1, 0, 1],
+          "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "938db8c9f82c8cb58d3f3ef4fd250036a48d26a712753d2fde5abd03a85cabf4", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "a8d0b6f0939cfd883251f62b265f971ef8a5ab97eee32b91460f08b965601d93", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "4718021fe01050dbde3316fb352f7f00769ba43127b16224fad4485efaa7dae8"],
+          "words": ["01", "0011", "000111"]
+        }
+      }
+    },
+    {
+      "id": "apd-diferenca-de-0-e-1",
+      "source": "PDAExamples.createDPDA01Same",
+      "acceptance": "FINAL_STATE",
+      "type": "DPDA",
+      "alphabet": ["0", "1"],
+      "stackAlphabet": ["X", "Y", "Z"],
+      "startStackSymbol": "Z",
+      "maxLength": 6,
+      "structure": {
+        "states": [
+          {
+            "name": "q0",
+            "x": 175,
+            "y": 225,
+            "initial": true,
+            "final": true
+          }
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 0,
+            "rules": [
+              {
+                "read": "0",
+                "pop": "X",
+                "push": "XX",
+                "yaas": "PUSH 0,X/XX"
+              },
+              {
+                "read": "0",
+                "pop": "Y",
+                "push": "",
+                "yaas": "POP 0,Y/ε"
+              },
+              {
+                "read": "0",
+                "pop": "Z",
+                "push": "XZ",
+                "yaas": "PUSH 0,Z/XZ"
+              },
+              {
+                "read": "1",
+                "pop": "X",
+                "push": "",
+                "yaas": "POP 1,X/ε"
+              },
+              {
+                "read": "1",
+                "pop": "Y",
+                "push": "YY",
+                "yaas": "PUSH 1,Y/YY"
+              },
+              {
+                "read": "1",
+                "pop": "Z",
+                "push": "YZ",
+                "yaas": "PUSH 1,Z/YZ"
+              }
+            ],
+            "loopAngle": 0
+          }
+        ]
+      },
+      "accepted": {
+        "counts": [1, 2, 4, 8, 16, 32, 64],
+        "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "1e9987e996a1c529f61f4339797481b7b1138b15f18a44e06dde45eabbc67921", "763139fcc307fd64cef5d5826d38a67474678dc22bd65ed4fd8538cba678753d", "2fd234b5b8154240c5da4e300d456dc88f18792f7604a777bc7add6e3bf4577c", "c9e33bc2186d0ffa09e3cb6fcbe20a3a21eb8d56d88d7a6eef6570bf29959b69", "f589d6304c43e44310e509c2fe540c452275f3848b6d5ba742c109234ba82228", "0ac983a46dce55575ad7b3676535336fcc1e8a7a74b845c52ce351900737bd68"],
+        "words": ["", "0", "1", "00", "01", "10", "11", "000", "001", "010", "011", "100", "101", "110", "111", "0000", "0001", "0010", "0011", "0100", "0101", "0110", "0111", "1000", "1001", "1010", "1011", "1100", "1101", "1110", "1111", "00000", "00001", "00010", "00011", "00100", "00101", "00110", "00111", "01000", "01001", "01010", "01011", "01100", "01101", "01110", "01111", "10000", "10001", "10010", "10011", "10100", "10101", "10110", "10111", "11000", "11001", "11010", "11011", "11100", "11101", "11110", "11111", "000000", "000001", "000010", "000011", "000100", "000101", "000110", "000111", "001000", "001001", "001010", "001011", "001100", "001101", "001110", "001111", "010000", "010001", "010010", "010011", "010100", "010101", "010110", "010111", "011000", "011001", "011010", "011011", "011100", "011101", "011110", "011111", "100000", "100001", "100010", "100011", "100100", "100101", "100110", "100111", "101000", "101001", "101010", "101011", "101100", "101101", "101110", "101111", "110000", "110001", "110010", "110011", "110100", "110101", "110110", "110111", "111000", "111001", "111010", "111011", "111100", "111101", "111110", "111111"]
+      },
+      "conversion": {
+        "algorithm": "PDAFinalStateToEmptyStack",
+        "acceptance": "EMPTY_STACK",
+        "states": 3,
+        "transitions": 4,
+        "rules": 15,
+        "startStackSymbol": "A",
+        "accepted": {
+          "counts": [1, 2, 4, 8, 16, 32, 64],
+          "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "1e9987e996a1c529f61f4339797481b7b1138b15f18a44e06dde45eabbc67921", "763139fcc307fd64cef5d5826d38a67474678dc22bd65ed4fd8538cba678753d", "2fd234b5b8154240c5da4e300d456dc88f18792f7604a777bc7add6e3bf4577c", "c9e33bc2186d0ffa09e3cb6fcbe20a3a21eb8d56d88d7a6eef6570bf29959b69", "f589d6304c43e44310e509c2fe540c452275f3848b6d5ba742c109234ba82228", "0ac983a46dce55575ad7b3676535336fcc1e8a7a74b845c52ce351900737bd68"],
+          "words": ["", "0", "1", "00", "01", "10", "11", "000", "001", "010", "011", "100", "101", "110", "111", "0000", "0001", "0010", "0011", "0100", "0101", "0110", "0111", "1000", "1001", "1010", "1011", "1100", "1101", "1110", "1111", "00000", "00001", "00010", "00011", "00100", "00101", "00110", "00111", "01000", "01001", "01010", "01011", "01100", "01101", "01110", "01111", "10000", "10001", "10010", "10011", "10100", "10101", "10110", "10111", "11000", "11001", "11010", "11011", "11100", "11101", "11110", "11111", "000000", "000001", "000010", "000011", "000100", "000101", "000110", "000111", "001000", "001001", "001010", "001011", "001100", "001101", "001110", "001111", "010000", "010001", "010010", "010011", "010100", "010101", "010110", "010111", "011000", "011001", "011010", "011011", "011100", "011101", "011110", "011111", "100000", "100001", "100010", "100011", "100100", "100101", "100110", "100111", "101000", "101001", "101010", "101011", "101100", "101101", "101110", "101111", "110000", "110001", "110010", "110011", "110100", "110101", "110110", "110111", "111000", "111001", "111010", "111011", "111100", "111101", "111110", "111111"]
+        }
+      }
+    },
+    {
+      "id": "ap-transicao-vazia-com-pilha-vazia",
+      "source": "PDAExamples.createPDAEmptyTransitionEmptyStackFinalState",
+      "acceptance": "FINAL_STATE",
+      "type": "DPDA",
+      "alphabet": [],
+      "stackAlphabet": ["Z"],
+      "startStackSymbol": "Z",
+      "maxLength": 0,
+      "structure": {
+        "states": [
+          {
+            "name": "q0",
+            "x": 100,
+            "y": 200,
+            "initial": true,
+            "final": false
+          },
+          {
+            "name": "q1",
+            "x": 250,
+            "y": 200,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q2",
+            "x": 400,
+            "y": 200,
+            "initial": false,
+            "final": true
+          }
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "Z",
+                "push": "",
+                "yaas": "POP ε,Z/ε"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 1,
+            "to": 2,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "ε",
+                "push": null,
+                "topoEpsilon": true,
+                "yaas": "DO_NOTHING ε,ε/ε"
+              }
+            ],
+            "curvature": 0.0
+          }
+        ]
+      },
+      "accepted": {
+        "counts": [1],
+        "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"],
+        "words": [""]
+      },
+      "conversion": {
+        "algorithm": "PDAFinalStateToEmptyStack",
+        "acceptance": "EMPTY_STACK",
+        "states": 5,
+        "transitions": 5,
+        "rules": 7,
+        "startStackSymbol": "X",
+        "accepted": {
+          "counts": [0],
+          "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"],
+          "words": []
+        }
+      }
+    },
+    {
+      "id": "ap-ciclo-de-transicoes-vazias",
+      "source": "PDAExamples.createPDAEmptyTransitionCycleFinalState",
+      "acceptance": "FINAL_STATE",
+      "type": "PDA",
+      "alphabet": [],
+      "stackAlphabet": ["Z"],
+      "startStackSymbol": "Z",
+      "maxLength": 0,
+      "structure": {
+        "states": [
+          {
+            "name": "q0",
+            "x": 150,
+            "y": 200,
+            "initial": true,
+            "final": false
+          },
+          {
+            "name": "q1",
+            "x": 300,
+            "y": 200,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q2",
+            "x": 450,
+            "y": 200,
+            "initial": false,
+            "final": true
+          }
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 2,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "Z",
+                "push": "Z",
+                "yaas": "DO_NOTHING ε,Z/Z"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 0,
+            "to": 1,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "Z",
+                "push": "Z",
+                "yaas": "DO_NOTHING ε,Z/Z"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 1,
+            "to": 0,
+            "rules": [
+              {
+                "read": "ε",
+                "pop": "Z",
+                "push": "Z",
+                "yaas": "DO_NOTHING ε,Z/Z"
+              }
+            ],
+            "curvature": 0.0
+          }
+        ]
+      },
+      "accepted": {
+        "counts": [1],
+        "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"],
+        "words": [""]
+      },
+      "conversion": {
+        "algorithm": "PDAFinalStateToEmptyStack",
+        "acceptance": "EMPTY_STACK",
+        "states": 5,
+        "transitions": 6,
+        "rules": 8,
+        "startStackSymbol": "X",
+        "accepted": {
+          "counts": [1],
+          "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"],
+          "words": [""]
+        }
+      }
+    }
+  ]
+}

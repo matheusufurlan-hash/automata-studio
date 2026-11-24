@@ -1,0 +1,54 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "Automata Studio",
+  "mainBinaryName": "automata-studio",
+  "version": "0.2.0",
+  "identifier": "io.github.matheusufurlan.automatosstudio",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:5173",
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Automata Studio",
+        "width": 1360,
+        "minWidth": 960,
+        "minHeight": 640,
+        "height": 860,
+        "resizable": true,
+        "fullscreen": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "deb",
+      "appimage"
+    ],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "shortDescription": "Simulador moderno de autômatos: AF, AP e MT",
+    "longDescription": "Simulador interativo de autômatos finitos (AFD, AFN, ε-AFN), autômatos com pilha e máquinas de Turing, no modelo do Hopcroft, para estudar Linguagens Formais e Autômatos. Baseado no YAAS do Prof. Dr. David Buzatto.",
+    "category": "Education",
+    "license": "GPL-3.0-only",
+    "linux": {
+      "deb": {
+        "desktopTemplate": "linux/automata-studio.desktop",
+        "conflicts": ["automatos-studio"],
+        "replaces": ["automatos-studio"]
+      }
+    }
+  }
+}

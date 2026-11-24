@@ -1,0 +1,1880 @@
+{
+  "generator": "tools/oraculo/GerarOraculoMT.java",
+  "yaas": "YAAS-1.0.7.jar",
+  "hash": "sha256 das palavras aceitas de cada tamanho, ordenadas e juntadas com \\n",
+  "examples": [
+    {
+      "id": "mt-0n1n",
+      "source": "TMExamples.createDTM0n1nFinalState",
+      "acceptance": "FINAL_STATE",
+      "type": "DTM",
+      "alphabet": ["0", "1"],
+      "maxLength": 6,
+      "structure": {
+        "states": [
+          {
+            "name": "q0",
+            "x": 125,
+            "y": 125,
+            "initial": true,
+            "final": false
+          },
+          {
+            "name": "q1",
+            "x": 275,
+            "y": 125,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q2",
+            "x": 425,
+            "y": 125,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q3",
+            "x": 125,
+            "y": 275,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q4",
+            "x": 275,
+            "y": 275,
+            "initial": false,
+            "final": true
+          }
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "rules": [
+              {
+                "read": "0",
+                "write": "X",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.1
+          },
+          {
+            "from": 1,
+            "to": 1,
+            "rules": [
+              {
+                "read": "0",
+                "write": "0",
+                "move": "R"
+              },
+              {
+                "read": "Y",
+                "write": "Y",
+                "move": "R"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 1,
+            "to": 2,
+            "rules": [
+              {
+                "read": "1",
+                "write": "Y",
+                "move": "L"
+              }
+            ],
+            "curvature": 0.09
+          },
+          {
+            "from": 2,
+            "to": 2,
+            "rules": [
+              {
+                "read": "0",
+                "write": "0",
+                "move": "L"
+              },
+              {
+                "read": "Y",
+                "write": "Y",
+                "move": "L"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 2,
+            "to": 0,
+            "rules": [
+              {
+                "read": "X",
+                "write": "X",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.14
+          },
+          {
+            "from": 0,
+            "to": 3,
+            "rules": [
+              {
+                "read": "Y",
+                "write": "Y",
+                "move": "R"
+              }
+            ],
+            "curvature": -0.09
+          },
+          {
+            "from": 3,
+            "to": 3,
+            "rules": [
+              {
+                "read": "Y",
+                "write": "Y",
+                "move": "R"
+              }
+            ],
+            "loopAngle": -180
+          },
+          {
+            "from": 3,
+            "to": 4,
+            "rules": [
+              {
+                "read": "B",
+                "write": "B",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.1
+          }
+        ]
+      },
+      "accepted": {
+        "counts": [0, 0, 1, 0, 1, 0, 1],
+        "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "938db8c9f82c8cb58d3f3ef4fd250036a48d26a712753d2fde5abd03a85cabf4", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "a8d0b6f0939cfd883251f62b265f971ef8a5ab97eee32b91460f08b965601d93", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "4718021fe01050dbde3316fb352f7f00769ba43127b16224fad4485efaa7dae8"],
+        "words": ["01", "0011", "000111"]
+      },
+      "yaasTwoOperations": [],
+      "yaasStepLimit": []
+    },
+    {
+      "id": "mt-monus",
+      "source": "TMExamples.createDTMMonusHalt",
+      "acceptance": "HALT",
+      "type": "DTM",
+      "alphabet": ["0", "1"],
+      "maxLength": 6,
+      "structure": {
+        "states": [
+          {
+            "name": "q0",
+            "x": 123,
+            "y": 149,
+            "initial": true,
+            "final": false
+          },
+          {
+            "name": "q1",
+            "x": 273,
+            "y": 149,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q2",
+            "x": 423,
+            "y": 149,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q3",
+            "x": 573,
+            "y": 149,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q4",
+            "x": 423,
+            "y": 299,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q5",
+            "x": 123,
+            "y": 299,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q6",
+            "x": 273,
+            "y": 299,
+            "initial": false,
+            "final": false
+          }
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "rules": [
+              {
+                "read": "0",
+                "write": "B",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.06
+          },
+          {
+            "from": 1,
+            "to": 2,
+            "rules": [
+              {
+                "read": "1",
+                "write": "1",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.06
+          },
+          {
+            "from": 1,
+            "to": 1,
+            "rules": [
+              {
+                "read": "0",
+                "write": "0",
+                "move": "R"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 0,
+            "to": 5,
+            "rules": [
+              {
+                "read": "1",
+                "write": "B",
+                "move": "R"
+              }
+            ],
+            "curvature": -0.07
+          },
+          {
+            "from": 5,
+            "to": 5,
+            "rules": [
+              {
+                "read": "0",
+                "write": "B",
+                "move": "R"
+              },
+              {
+                "read": "1",
+                "write": "B",
+                "move": "R"
+              }
+            ],
+            "loopAngle": -180
+          },
+          {
+            "from": 2,
+            "to": 2,
+            "rules": [
+              {
+                "read": "1",
+                "write": "1",
+                "move": "R"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 2,
+            "to": 3,
+            "rules": [
+              {
+                "read": "0",
+                "write": "1",
+                "move": "L"
+              }
+            ],
+            "curvature": 0.07
+          },
+          {
+            "from": 2,
+            "to": 4,
+            "rules": [
+              {
+                "read": "B",
+                "write": "B",
+                "move": "L"
+              }
+            ],
+            "curvature": -0.07
+          },
+          {
+            "from": 3,
+            "to": 3,
+            "rules": [
+              {
+                "read": "0",
+                "write": "0",
+                "move": "L"
+              },
+              {
+                "read": "1",
+                "write": "1",
+                "move": "L"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 4,
+            "to": 4,
+            "rules": [
+              {
+                "read": "0",
+                "write": "0",
+                "move": "L"
+              },
+              {
+                "read": "1",
+                "write": "B",
+                "move": "L"
+              }
+            ],
+            "loopAngle": -180
+          },
+          {
+            "from": 5,
+            "to": 6,
+            "rules": [
+              {
+                "read": "B",
+                "write": "B",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.06
+          },
+          {
+            "from": 4,
+            "to": 6,
+            "rules": [
+              {
+                "read": "B",
+                "write": "0",
+                "move": "R"
+              }
+            ],
+            "curvature": -0.06
+          },
+          {
+            "from": 3,
+            "to": 0,
+            "rules": [
+              {
+                "read": "B",
+                "write": "B",
+                "move": "R"
+              }
+            ],
+            "curvature": -0.2
+          }
+        ]
+      },
+      "accepted": {
+        "counts": [1, 2, 4, 8, 16, 32, 64],
+        "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "1e9987e996a1c529f61f4339797481b7b1138b15f18a44e06dde45eabbc67921", "763139fcc307fd64cef5d5826d38a67474678dc22bd65ed4fd8538cba678753d", "2fd234b5b8154240c5da4e300d456dc88f18792f7604a777bc7add6e3bf4577c", "c9e33bc2186d0ffa09e3cb6fcbe20a3a21eb8d56d88d7a6eef6570bf29959b69", "f589d6304c43e44310e509c2fe540c452275f3848b6d5ba742c109234ba82228", "0ac983a46dce55575ad7b3676535336fcc1e8a7a74b845c52ce351900737bd68"],
+        "words": ["", "0", "1", "00", "01", "10", "11", "000", "001", "010", "011", "100", "101", "110", "111", "0000", "0001", "0010", "0011", "0100", "0101", "0110", "0111", "1000", "1001", "1010", "1011", "1100", "1101", "1110", "1111", "00000", "00001", "00010", "00011", "00100", "00101", "00110", "00111", "01000", "01001", "01010", "01011", "01100", "01101", "01110", "01111", "10000", "10001", "10010", "10011", "10100", "10101", "10110", "10111", "11000", "11001", "11010", "11011", "11100", "11101", "11110", "11111", "000000", "000001", "000010", "000011", "000100", "000101", "000110", "000111", "001000", "001001", "001010", "001011", "001100", "001101", "001110", "001111", "010000", "010001", "010010", "010011", "010100", "010101", "010110", "010111", "011000", "011001", "011010", "011011", "011100", "011101", "011110", "011111", "100000", "100001", "100010", "100011", "100100", "100101", "100110", "100111", "101000", "101001", "101010", "101011", "101100", "101101", "101110", "101111", "110000", "110001", "110010", "110011", "110100", "110101", "110110", "110111", "111000", "111001", "111010", "111011", "111100", "111101", "111110", "111111"]
+      },
+      "outputs": {
+        "": "",
+        "0": "",
+        "1": "",
+        "00": "0",
+        "01": "0",
+        "10": "",
+        "11": "",
+        "000": "00",
+        "001": "00",
+        "010": "",
+        "011": "0",
+        "100": "",
+        "101": "",
+        "110": "",
+        "111": "",
+        "0000": "000",
+        "0001": "000",
+        "0010": "0",
+        "0011": "00",
+        "0100": "",
+        "0101": "",
+        "0110": "",
+        "0111": "0",
+        "1000": "",
+        "1001": "",
+        "1010": "",
+        "1011": "",
+        "1100": "",
+        "1101": "",
+        "1110": "",
+        "1111": "",
+        "00000": "0000",
+        "00001": "0000",
+        "00010": "00",
+        "00011": "000",
+        "00100": "",
+        "00101": "0",
+        "00110": "0",
+        "00111": "00",
+        "01000": "",
+        "01001": "",
+        "01010": "",
+        "01011": "",
+        "01100": "",
+        "01101": "",
+        "01110": "",
+        "01111": "0",
+        "10000": "",
+        "10001": "",
+        "10010": "",
+        "10011": "",
+        "10100": "",
+        "10101": "",
+        "10110": "",
+        "10111": "",
+        "11000": "",
+        "11001": "",
+        "11010": "",
+        "11011": "",
+        "11100": "",
+        "11101": "",
+        "11110": "",
+        "11111": "",
+        "000000": "00000",
+        "000001": "00000",
+        "000010": "000",
+        "000011": "0000",
+        "000100": "0",
+        "000101": "00",
+        "000110": "00",
+        "000111": "000",
+        "001000": "",
+        "001001": "",
+        "001010": "",
+        "001011": "0",
+        "001100": "",
+        "001101": "0",
+        "001110": "0",
+        "001111": "00",
+        "010000": "",
+        "010001": "",
+        "010010": "",
+        "010011": "",
+        "010100": "",
+        "010101": "",
+        "010110": "",
+        "010111": "",
+        "011000": "",
+        "011001": "",
+        "011010": "",
+        "011011": "",
+        "011100": "",
+        "011101": "",
+        "011110": "",
+        "011111": "0",
+        "100000": "",
+        "100001": "",
+        "100010": "",
+        "100011": "",
+        "100100": "",
+        "100101": "",
+        "100110": "",
+        "100111": "",
+        "101000": "",
+        "101001": "",
+        "101010": "",
+        "101011": "",
+        "101100": "",
+        "101101": "",
+        "101110": "",
+        "101111": "",
+        "110000": "",
+        "110001": "",
+        "110010": "",
+        "110011": "",
+        "110100": "",
+        "110101": "",
+        "110110": "",
+        "110111": "",
+        "111000": "",
+        "111001": "",
+        "111010": "",
+        "111011": "",
+        "111100": "",
+        "111101": "",
+        "111110": "",
+        "111111": ""
+      },
+      "yaasTwoOperations": [],
+      "yaasStepLimit": []
+    },
+    {
+      "id": "mt-laco-infinito",
+      "source": "TMExamples.createDTMInfiniteLoopFinalState",
+      "acceptance": "FINAL_STATE",
+      "type": "DTM",
+      "alphabet": ["0", "1"],
+      "maxLength": 6,
+      "structure": {
+        "states": [
+          {
+            "name": "q0",
+            "x": 121,
+            "y": 136,
+            "initial": true,
+            "final": false
+          },
+          {
+            "name": "q1",
+            "x": 271,
+            "y": 136,
+            "initial": false,
+            "final": true
+          }
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 0,
+            "rules": [
+              {
+                "read": "0",
+                "write": "0",
+                "move": "R"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 0,
+            "to": 1,
+            "rules": [
+              {
+                "read": "1",
+                "write": "1",
+                "move": "L"
+              }
+            ],
+            "curvature": 0.16
+          },
+          {
+            "from": 1,
+            "to": 1,
+            "rules": [
+              {
+                "read": "0",
+                "write": "0",
+                "move": "R"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 1,
+            "to": 0,
+            "rules": [
+              {
+                "read": "1",
+                "write": "1",
+                "move": "L"
+              }
+            ],
+            "curvature": 0.16
+          }
+        ]
+      },
+      "accepted": {
+        "counts": [0, 1, 2, 4, 8, 16, 32],
+        "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b", "96606aacd3adc73700b80832d9c8a7733e89782eb8b85ae4ac5d8acd62eda29c", "a1e3c9059e55d98223d8bcb0bb98fff7b6d822b21d2253d50bf3eb13ba7982ce", "cfaad28f8e99ce95b1a1ab0f0eb177b4d3373c39927265a0719385156cf86dce", "4f39eaae9394dac523ef0cbed10dad8aa2e2d90a264d3852e2bd5a1371569536", "1b7b1e9ec6f4b8d83beb70223ec86571aa6ec0ef03c4a0660b76a2946242c816"],
+        "words": ["1", "10", "11", "100", "101", "110", "111", "1000", "1001", "1010", "1011", "1100", "1101", "1110", "1111", "10000", "10001", "10010", "10011", "10100", "10101", "10110", "10111", "11000", "11001", "11010", "11011", "11100", "11101", "11110", "11111", "100000", "100001", "100010", "100011", "100100", "100101", "100110", "100111", "101000", "101001", "101010", "101011", "101100", "101101", "101110", "101111", "110000", "110001", "110010", "110011", "110100", "110101", "110110", "110111", "111000", "111001", "111010", "111011", "111100", "111101", "111110", "111111"]
+      },
+      "yaasTwoOperations": [],
+      "yaasStepLimit": ["01", "001", "010", "011", "0001", "0010", "0011", "0100", "0101", "0110", "0111", "00001", "00010", "00011", "00100", "00101", "00110", "00111", "01000", "01001", "01010", "01011", "01100", "01101", "01110", "01111", "000001", "000010", "000011", "000100", "000101", "000110", "000111", "001000", "001001", "001010", "001011", "001100", "001101", "001110", "001111", "010000", "010001", "010010", "010011", "010100", "010101", "010110", "010111", "011000", "011001", "011010", "011011", "011100", "011101", "011110", "011111"]
+    },
+    {
+      "id": "mt-sim-ou-nao",
+      "source": "TMExamples.createDTMExample",
+      "acceptance": "FINAL_STATE",
+      "type": "DTM",
+      "alphabet": ["0", "1"],
+      "maxLength": 6,
+      "structure": {
+        "states": [
+          {
+            "name": "q0",
+            "x": 125,
+            "y": 125,
+            "initial": true,
+            "final": false
+          },
+          {
+            "name": "q1",
+            "x": 275,
+            "y": 125,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q2",
+            "x": 425,
+            "y": 125,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q3",
+            "x": 275,
+            "y": 275,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "qs",
+            "x": 575,
+            "y": 125,
+            "initial": false,
+            "final": true
+          },
+          {
+            "name": "qn",
+            "x": 425,
+            "y": 275,
+            "initial": false,
+            "final": true
+          }
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "rules": [
+              {
+                "read": "B",
+                "write": "B",
+                "move": "L"
+              }
+            ],
+            "curvature": 0.09
+          },
+          {
+            "from": 1,
+            "to": 2,
+            "rules": [
+              {
+                "read": "0",
+                "write": "B",
+                "move": "L"
+              }
+            ],
+            "curvature": 0.08
+          },
+          {
+            "from": 2,
+            "to": 4,
+            "rules": [
+              {
+                "read": "0",
+                "write": "B",
+                "move": "L"
+              }
+            ],
+            "curvature": 0.07
+          },
+          {
+            "from": 2,
+            "to": 5,
+            "rules": [
+              {
+                "read": "1",
+                "write": "B",
+                "move": "L"
+              },
+              {
+                "read": "B",
+                "write": "B",
+                "move": "L"
+              }
+            ],
+            "curvature": 0.05
+          },
+          {
+            "from": 1,
+            "to": 3,
+            "rules": [
+              {
+                "read": "1",
+                "write": "B",
+                "move": "L"
+              }
+            ],
+            "curvature": -0.06
+          },
+          {
+            "from": 1,
+            "to": 5,
+            "rules": [
+              {
+                "read": "B",
+                "write": "B",
+                "move": "L"
+              }
+            ],
+            "curvature": -0.06
+          },
+          {
+            "from": 3,
+            "to": 5,
+            "rules": [
+              {
+                "read": "0",
+                "write": "B",
+                "move": "L"
+              },
+              {
+                "read": "1",
+                "write": "B",
+                "move": "L"
+              },
+              {
+                "read": "B",
+                "write": "B",
+                "move": "L"
+              }
+            ],
+            "curvature": -0.08
+          },
+          {
+            "from": 0,
+            "to": 0,
+            "rules": [
+              {
+                "read": "0",
+                "write": "0",
+                "move": "R"
+              },
+              {
+                "read": "1",
+                "write": "1",
+                "move": "R"
+              }
+            ],
+            "loopAngle": 0
+          }
+        ]
+      },
+      "accepted": {
+        "counts": [1, 2, 4, 8, 16, 32, 64],
+        "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "1e9987e996a1c529f61f4339797481b7b1138b15f18a44e06dde45eabbc67921", "763139fcc307fd64cef5d5826d38a67474678dc22bd65ed4fd8538cba678753d", "2fd234b5b8154240c5da4e300d456dc88f18792f7604a777bc7add6e3bf4577c", "c9e33bc2186d0ffa09e3cb6fcbe20a3a21eb8d56d88d7a6eef6570bf29959b69", "f589d6304c43e44310e509c2fe540c452275f3848b6d5ba742c109234ba82228", "0ac983a46dce55575ad7b3676535336fcc1e8a7a74b845c52ce351900737bd68"],
+        "words": ["", "0", "1", "00", "01", "10", "11", "000", "001", "010", "011", "100", "101", "110", "111", "0000", "0001", "0010", "0011", "0100", "0101", "0110", "0111", "1000", "1001", "1010", "1011", "1100", "1101", "1110", "1111", "00000", "00001", "00010", "00011", "00100", "00101", "00110", "00111", "01000", "01001", "01010", "01011", "01100", "01101", "01110", "01111", "10000", "10001", "10010", "10011", "10100", "10101", "10110", "10111", "11000", "11001", "11010", "11011", "11100", "11101", "11110", "11111", "000000", "000001", "000010", "000011", "000100", "000101", "000110", "000111", "001000", "001001", "001010", "001011", "001100", "001101", "001110", "001111", "010000", "010001", "010010", "010011", "010100", "010101", "010110", "010111", "011000", "011001", "011010", "011011", "011100", "011101", "011110", "011111", "100000", "100001", "100010", "100011", "100100", "100101", "100110", "100111", "101000", "101001", "101010", "101011", "101100", "101101", "101110", "101111", "110000", "110001", "110010", "110011", "110100", "110101", "110110", "110111", "111000", "111001", "111010", "111011", "111100", "111101", "111110", "111111"]
+      },
+      "yaasTwoOperations": ["01", "10", "11", "101", "0101", "1101", "00101", "01101", "10101", "11101", "000101", "001101", "010101", "011101", "100101", "101101", "110101", "111101"],
+      "yaasStepLimit": [],
+      "yaasEmptyWord": "TMID.derive lança StringIndexOutOfBoundsException com a palavra vazia; simulada com a fita \"B\""
+    },
+    {
+      "id": "mt-mesmo-numero-de-0-e-1",
+      "source": "TMExamples.createDTM01SameFinalState",
+      "acceptance": "FINAL_STATE",
+      "type": "DTM",
+      "alphabet": ["0", "1"],
+      "maxLength": 6,
+      "structure": {
+        "states": [
+          {
+            "name": "q0",
+            "x": 100,
+            "y": 200,
+            "initial": true,
+            "final": false
+          },
+          {
+            "name": "q1",
+            "x": 250,
+            "y": 100,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q2",
+            "x": 400,
+            "y": 100,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q3",
+            "x": 250,
+            "y": 300,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q4",
+            "x": 400,
+            "y": 300,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q5",
+            "x": 450,
+            "y": 200,
+            "initial": false,
+            "final": true
+          }
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 0,
+            "rules": [
+              {
+                "read": "X",
+                "write": "B",
+                "move": "R"
+              },
+              {
+                "read": "Y",
+                "write": "B",
+                "move": "R"
+              }
+            ],
+            "loopAngle": -25
+          },
+          {
+            "from": 0,
+            "to": 1,
+            "rules": [
+              {
+                "read": "0",
+                "write": "B",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 0,
+            "to": 3,
+            "rules": [
+              {
+                "read": "1",
+                "write": "B",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 1,
+            "to": 2,
+            "rules": [
+              {
+                "read": "1",
+                "write": "Y",
+                "move": "L"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 1,
+            "to": 1,
+            "rules": [
+              {
+                "read": "0",
+                "write": "0",
+                "move": "R"
+              },
+              {
+                "read": "Y",
+                "write": "Y",
+                "move": "R"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 2,
+            "to": 2,
+            "rules": [
+              {
+                "read": "0",
+                "write": "0",
+                "move": "L"
+              },
+              {
+                "read": "Y",
+                "write": "Y",
+                "move": "L"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 2,
+            "to": 0,
+            "rules": [
+              {
+                "read": "B",
+                "write": "B",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 3,
+            "to": 3,
+            "rules": [
+              {
+                "read": "1",
+                "write": "1",
+                "move": "R"
+              },
+              {
+                "read": "X",
+                "write": "X",
+                "move": "R"
+              }
+            ],
+            "loopAngle": -180
+          },
+          {
+            "from": 4,
+            "to": 4,
+            "rules": [
+              {
+                "read": "1",
+                "write": "1",
+                "move": "L"
+              },
+              {
+                "read": "X",
+                "write": "X",
+                "move": "L"
+              }
+            ],
+            "loopAngle": -180
+          },
+          {
+            "from": 3,
+            "to": 4,
+            "rules": [
+              {
+                "read": "0",
+                "write": "X",
+                "move": "L"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 4,
+            "to": 0,
+            "rules": [
+              {
+                "read": "B",
+                "write": "B",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 0,
+            "to": 5,
+            "rules": [
+              {
+                "read": "B",
+                "write": "B",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.0
+          }
+        ]
+      },
+      "accepted": {
+        "counts": [1, 0, 2, 0, 6, 0, 20],
+        "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "077ed22a37eb5edf876120b4956ad8ec62bae647a094503e255094c9cb8d829f", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "ff6522a2ac4cb0964e572bc1f4a676ac4ab3c8e4fc4bca9e4d738a678d11a583", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "91ee1a19dd2f7b590431e8a611f4e13d4a8945bc2ac30e22cbe728fd28511eed"],
+        "words": ["", "01", "10", "0011", "0101", "0110", "1001", "1010", "1100", "000111", "001011", "001101", "001110", "010011", "010101", "010110", "011001", "011010", "011100", "100011", "100101", "100110", "101001", "101010", "101100", "110001", "110010", "110100", "111000"]
+      },
+      "yaasTwoOperations": [],
+      "yaasStepLimit": [],
+      "yaasEmptyWord": "TMID.derive lança StringIndexOutOfBoundsException com a palavra vazia; simulada com a fita \"B\""
+    },
+    {
+      "id": "mt-anbncn",
+      "source": "TMExamples.createDTMAnBnCnFinalState",
+      "acceptance": "FINAL_STATE",
+      "type": "DTM",
+      "alphabet": ["a", "b", "c"],
+      "maxLength": 6,
+      "structure": {
+        "states": [
+          {
+            "name": "q0",
+            "x": 100,
+            "y": 225,
+            "initial": true,
+            "final": false
+          },
+          {
+            "name": "q1",
+            "x": 225,
+            "y": 125,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q2",
+            "x": 375,
+            "y": 125,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q3",
+            "x": 525,
+            "y": 125,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q4",
+            "x": 225,
+            "y": 325,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q5",
+            "x": 375,
+            "y": 325,
+            "initial": false,
+            "final": true
+          }
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "rules": [
+              {
+                "read": "a",
+                "write": "B",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 1,
+            "to": 1,
+            "rules": [
+              {
+                "read": "X",
+                "write": "X",
+                "move": "R"
+              },
+              {
+                "read": "a",
+                "write": "a",
+                "move": "R"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 1,
+            "to": 2,
+            "rules": [
+              {
+                "read": "b",
+                "write": "X",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 2,
+            "to": 2,
+            "rules": [
+              {
+                "read": "Y",
+                "write": "Y",
+                "move": "R"
+              },
+              {
+                "read": "b",
+                "write": "b",
+                "move": "R"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 2,
+            "to": 3,
+            "rules": [
+              {
+                "read": "c",
+                "write": "Y",
+                "move": "L"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 3,
+            "to": 3,
+            "rules": [
+              {
+                "read": "X",
+                "write": "X",
+                "move": "L"
+              },
+              {
+                "read": "Y",
+                "write": "Y",
+                "move": "L"
+              },
+              {
+                "read": "a",
+                "write": "a",
+                "move": "L"
+              },
+              {
+                "read": "b",
+                "write": "b",
+                "move": "L"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 3,
+            "to": 0,
+            "rules": [
+              {
+                "read": "B",
+                "write": "B",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 0,
+            "to": 4,
+            "rules": [
+              {
+                "read": "X",
+                "write": "B",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 4,
+            "to": 4,
+            "rules": [
+              {
+                "read": "X",
+                "write": "X",
+                "move": "R"
+              },
+              {
+                "read": "Y",
+                "write": "Y",
+                "move": "R"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 4,
+            "to": 5,
+            "rules": [
+              {
+                "read": "B",
+                "write": "B",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.0
+          }
+        ]
+      },
+      "accepted": {
+        "counts": [0, 0, 0, 1, 0, 0, 1],
+        "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "a5b432ee0307be7fa23aa00461f54eee34ba9d45251b5504567d37a8da339dff"],
+        "words": ["abc", "aabbcc"]
+      },
+      "yaasTwoOperations": [],
+      "yaasStepLimit": []
+    },
+    {
+      "id": "mt-divisao",
+      "source": "TMExamples.createDTMDivideHalt",
+      "acceptance": "HALT",
+      "type": "DTM",
+      "alphabet": ["0", "1"],
+      "maxLength": 6,
+      "structure": {
+        "states": [
+          {
+            "name": "q0",
+            "x": 125,
+            "y": 275,
+            "initial": true,
+            "final": false
+          },
+          {
+            "name": "q1",
+            "x": 275,
+            "y": 275,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q2",
+            "x": 425,
+            "y": 275,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q3",
+            "x": 575,
+            "y": 275,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q4",
+            "x": 725,
+            "y": 275,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q5",
+            "x": 425,
+            "y": 425,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q6",
+            "x": 575,
+            "y": 425,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q7",
+            "x": 725,
+            "y": 425,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q8",
+            "x": 575,
+            "y": 125,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q9",
+            "x": 725,
+            "y": 125,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q10",
+            "x": 875,
+            "y": 125,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q11",
+            "x": 1025,
+            "y": 125,
+            "initial": false,
+            "final": false
+          }
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 0,
+            "rules": [
+              {
+                "read": "0",
+                "write": "0",
+                "move": "R"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 0,
+            "to": 1,
+            "rules": [
+              {
+                "read": "1",
+                "write": "1",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 1,
+            "to": 1,
+            "rules": [
+              {
+                "read": "X",
+                "write": "X",
+                "move": "R"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 1,
+            "to": 2,
+            "rules": [
+              {
+                "read": "0",
+                "write": "X",
+                "move": "L"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 2,
+            "to": 2,
+            "rules": [
+              {
+                "read": "0",
+                "write": "0",
+                "move": "L"
+              },
+              {
+                "read": "1",
+                "write": "1",
+                "move": "L"
+              },
+              {
+                "read": "X",
+                "write": "X",
+                "move": "L"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 2,
+            "to": 3,
+            "rules": [
+              {
+                "read": "B",
+                "write": "B",
+                "move": "R"
+              },
+              {
+                "read": "Y",
+                "write": "Y",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 3,
+            "to": 4,
+            "rules": [
+              {
+                "read": "0",
+                "write": "Y",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 4,
+            "to": 4,
+            "rules": [
+              {
+                "read": "0",
+                "write": "0",
+                "move": "R"
+              },
+              {
+                "read": "1",
+                "write": "1",
+                "move": "R"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 1,
+            "to": 5,
+            "rules": [
+              {
+                "read": "1",
+                "write": "1",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 5,
+            "to": 6,
+            "rules": [
+              {
+                "read": "B",
+                "write": "0",
+                "move": "L"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 5,
+            "to": 5,
+            "rules": [
+              {
+                "read": "0",
+                "write": "0",
+                "move": "R"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 6,
+            "to": 6,
+            "rules": [
+              {
+                "read": "0",
+                "write": "0",
+                "move": "L"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 6,
+            "to": 7,
+            "rules": [
+              {
+                "read": "1",
+                "write": "1",
+                "move": "L"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 7,
+            "to": 7,
+            "rules": [
+              {
+                "read": "X",
+                "write": "0",
+                "move": "L"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 4,
+            "to": 1,
+            "rules": [
+              {
+                "read": "X",
+                "write": "X",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.11
+          },
+          {
+            "from": 7,
+            "to": 1,
+            "rules": [
+              {
+                "read": "1",
+                "write": "1",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.29
+          },
+          {
+            "from": 3,
+            "to": 8,
+            "rules": [
+              {
+                "read": "1",
+                "write": "1",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 8,
+            "to": 8,
+            "rules": [
+              {
+                "read": "0",
+                "write": "0",
+                "move": "R"
+              },
+              {
+                "read": "X",
+                "write": "X",
+                "move": "R"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 8,
+            "to": 9,
+            "rules": [
+              {
+                "read": "1",
+                "write": "B",
+                "move": "L"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 9,
+            "to": 10,
+            "rules": [
+              {
+                "read": "B",
+                "write": "B",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 10,
+            "to": 10,
+            "rules": [
+              {
+                "read": "B",
+                "write": "B",
+                "move": "R"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "rules": [
+              {
+                "read": "0",
+                "write": "0",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 9,
+            "to": 9,
+            "rules": [
+              {
+                "read": "0",
+                "write": "B",
+                "move": "L"
+              },
+              {
+                "read": "1",
+                "write": "B",
+                "move": "L"
+              },
+              {
+                "read": "X",
+                "write": "B",
+                "move": "L"
+              },
+              {
+                "read": "Y",
+                "write": "B",
+                "move": "L"
+              }
+            ],
+            "loopAngle": 0
+          }
+        ]
+      },
+      "accepted": {
+        "counts": [1, 2, 3, 5, 12, 26, 57],
+        "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "1e9987e996a1c529f61f4339797481b7b1138b15f18a44e06dde45eabbc67921", "2b34662a5af743f8df8bb28728dcc572e4483d2adeaa444d14faf2c80940675c", "d00622f80804a064a045a721100b898cd78e16cba9ca6a4e28599103834b2476", "1bf74b5306c5d2358a69c137a65eb2b63ee9ccf0af7bb86703432d7281c2ac87", "77428962b385e118a399112de4969d188e0916ad77d08a2539179dc2c76a2752", "e0ec36f0139168325d49f6908c6fd7b59a5266091d69860fcb53ad74fec481c3"],
+        "words": ["", "0", "1", "00", "01", "10", "000", "001", "010", "100", "111", "0000", "0001", "0010", "0100", "0101", "0111", "1000", "1010", "1011", "1101", "1110", "1111", "00000", "00001", "00010", "00100", "00101", "00111", "01000", "01010", "01011", "01101", "01110", "01111", "10000", "10010", "10011", "10100", "10101", "10110", "10111", "11001", "11010", "11011", "11100", "11101", "11110", "11111", "000000", "000001", "000010", "000100", "000101", "000111", "001000", "001001", "001010", "001011", "001101", "001110", "001111", "010000", "010010", "010011", "010100", "010101", "010110", "010111", "011001", "011010", "011011", "011100", "011101", "011110", "011111", "100000", "100010", "100011", "100100", "100101", "100110", "100111", "101000", "101001", "101010", "101011", "101100", "101101", "101110", "101111", "110001", "110010", "110011", "110100", "110101", "110110", "110111", "111000", "111001", "111010", "111011", "111100", "111101", "111110", "111111"]
+      },
+      "outputs": {
+        "": "",
+        "0": "0",
+        "1": "1",
+        "00": "00",
+        "01": "01",
+        "10": "1X",
+        "000": "000",
+        "001": "001",
+        "010": "Y1X",
+        "100": "1X0",
+        "111": "111",
+        "0000": "0000",
+        "0001": "0001",
+        "0010": "Y01X",
+        "0100": "Y1XX",
+        "0101": "0",
+        "0111": "0111",
+        "1000": "1X00",
+        "1010": "0",
+        "1011": "1",
+        "1101": "1101",
+        "1110": "1110",
+        "1111": "1111",
+        "00000": "00000",
+        "00001": "00001",
+        "00010": "Y001X",
+        "00100": "YY1XX",
+        "00101": "00",
+        "00111": "00111",
+        "01000": "Y1XX0",
+        "01010": "00",
+        "01011": "Y1X11",
+        "01101": "01101",
+        "01110": "01110",
+        "01111": "01111",
+        "10000": "1X000",
+        "10010": "0",
+        "10011": "1",
+        "10100": "00",
+        "10101": "01",
+        "10110": "10",
+        "10111": "11",
+        "11001": "11001",
+        "11010": "11010",
+        "11011": "11011",
+        "11100": "11100",
+        "11101": "11101",
+        "11110": "11110",
+        "11111": "11111",
+        "000000": "000000",
+        "000001": "000001",
+        "000010": "Y0001X",
+        "000100": "YY01XX",
+        "000101": "000",
+        "000111": "000111",
+        "001000": "YY1XXX",
+        "001001": "0",
+        "001010": "000",
+        "001011": "Y01X11",
+        "001101": "001101",
+        "001110": "001110",
+        "001111": "001111",
+        "010000": "Y1XX00",
+        "010010": "0",
+        "010011": "1",
+        "010100": "000",
+        "010101": "Y1X101",
+        "010110": "Y1X110",
+        "010111": "Y1X111",
+        "011001": "011001",
+        "011010": "011010",
+        "011011": "011011",
+        "011100": "011100",
+        "011101": "011101",
+        "011110": "011110",
+        "011111": "011111",
+        "100000": "1X0000",
+        "100010": "0",
+        "100011": "1",
+        "100100": "00",
+        "100101": "01",
+        "100110": "10",
+        "100111": "11",
+        "101000": "000",
+        "101001": "001",
+        "101010": "010",
+        "101011": "011",
+        "101100": "100",
+        "101101": "101",
+        "101110": "110",
+        "101111": "111",
+        "110001": "110001",
+        "110010": "110010",
+        "110011": "110011",
+        "110100": "110100",
+        "110101": "110101",
+        "110110": "110110",
+        "110111": "110111",
+        "111000": "111000",
+        "111001": "111001",
+        "111010": "111010",
+        "111011": "111011",
+        "111100": "111100",
+        "111101": "111101",
+        "111110": "111110",
+        "111111": "111111"
+      },
+      "yaasTwoOperations": [],
+      "yaasStepLimit": ["11", "011", "101", "110", "0011", "0110", "1001", "1100", "00011", "00110", "01001", "01100", "10001", "11000", "000011", "000110", "001100", "010001", "011000", "100001", "110000"]
+    },
+    {
+      "id": "mt-nao-deterministica",
+      "source": "TMExamples.createNTM",
+      "acceptance": "FINAL_STATE",
+      "type": "NTM",
+      "alphabet": ["0", "1"],
+      "maxLength": 6,
+      "structure": {
+        "states": [
+          {
+            "name": "q0",
+            "x": 100,
+            "y": 150,
+            "initial": true,
+            "final": false
+          },
+          {
+            "name": "q1",
+            "x": 250,
+            "y": 150,
+            "initial": false,
+            "final": false
+          },
+          {
+            "name": "q2",
+            "x": 400,
+            "y": 150,
+            "initial": false,
+            "final": true
+          }
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 0,
+            "rules": [
+              {
+                "read": "0",
+                "write": "0",
+                "move": "R"
+              },
+              {
+                "read": "1",
+                "write": "1",
+                "move": "R"
+              }
+            ],
+            "loopAngle": 0
+          },
+          {
+            "from": 0,
+            "to": 1,
+            "rules": [
+              {
+                "read": "0",
+                "write": "0",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.0
+          },
+          {
+            "from": 1,
+            "to": 2,
+            "rules": [
+              {
+                "read": "0",
+                "write": "0",
+                "move": "R"
+              }
+            ],
+            "curvature": 0.0
+          }
+        ]
+      },
+      "accepted": {
+        "counts": [0, 0, 0, 0, 0, 0, 0],
+        "sha256": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"],
+        "words": []
+      },
+      "yaasTwoOperations": [],
+      "yaasStepLimit": []
+    }
+  ],
+  "bugs": [
+    {
+      "id": "duas-operacoes",
+      "description": "q0 → q1 com 0/0 → e 1/1 →; q1 → q2 com 1/1 →; q2 final",
+      "word": "01",
+      "acceptance": "FINAL_STATE",
+      "yaasAccepted": false,
+      "yaasAbleToHalt": true,
+      "yaasTwoOperations": true
+    },
+    {
+      "id": "limite-4000-passos",
+      "description": "mt-0n1n (Exemplo 8.2 do Hopcroft) com 0⁴⁵1⁴⁵",
+      "word": "000000000000000000000000000000000000000000000111111111111111111111111111111111111111111111",
+      "acceptance": "FINAL_STATE",
+      "yaasAccepted": false,
+      "yaasAbleToHalt": false,
+      "yaasTwoOperations": false
+    }
+  ]
+}
